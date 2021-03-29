@@ -5,7 +5,7 @@ using UnityEngine;
 public class ProjectileScript : MonoBehaviour
 {
     public float detonateTime = 1;
-    public float radius = 3;
+    public float radius;
 
     public LayerMask terrainLayer;
     

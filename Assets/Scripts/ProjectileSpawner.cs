@@ -13,7 +13,7 @@ public class ProjectileSpawner : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             Vector3 spawnPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            spawnPosition.z = 0;
+            spawnPosition.z = 1;
             SpawnProjectileAtLocation(spawnPosition);
 
         }

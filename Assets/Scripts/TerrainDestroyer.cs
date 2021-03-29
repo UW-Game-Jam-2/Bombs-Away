@@ -7,7 +7,7 @@ public class TerrainDestroyer : MonoBehaviour
 {
 
     public Tilemap terrain;
-    //public Tilemap destoryTerrain;
+    public Tilemap backgroundTerrain;
     public TileBase explodedTile;
 
     public static TerrainDestroyer instance = null;
@@ -28,10 +28,10 @@ public class TerrainDestroyer : MonoBehaviour
     public void DestroyTerrain(Vector3 explosionLocation, float radius)
     {
 
-        /// The step function moves up by 0.25 because that is the scale of the tile map and we need to check every tile for this to work
-        for (float x = -radius; x < radius; x += 0.25f)
+        /// The step function moves up by a small step because that is the scale of the tile map and we need to check every tile for this to work
+        for (float x = -radius; x < radius; x += 0.05f)
         {
-            for (float y = -radius; y < radius; y += 0.25f)
+            for (float y = -radius; y < radius; y += 0.05f)
             {
 
                 if (Mathf.Pow(x, 2) + Mathf.Pow(y, 2) < Mathf.Pow(radius, 2))
@@ -51,6 +51,6 @@ public class TerrainDestroyer : MonoBehaviour
     void DestroyTile(Vector3Int tilePosition)
     {
         terrain.SetTile(tilePosition, null);
-        //destoryTerrain.SetTile(tilePosition, explodedTile);
+        backgroundTerrain.SetTile(tilePosition, explodedTile);
     }
 }
