@@ -8,6 +8,8 @@ public class ProjectileScript : MonoBehaviour
     public float radius;
 
     public LayerMask terrainLayer;
+
+    public GameObject explosionFx;
     
 
     SpriteRenderer spriteRenderer;
@@ -36,7 +38,23 @@ public class ProjectileScript : MonoBehaviour
     {
         TerrainDestroyer.instance.DestroyTerrain(transform.position, radius);
 
+        SpawnExplosionFX();
+        DoCameraShake();
+
         Destroy(gameObject);
     }
 
+
+    void SpawnExplosionFX()
+    {
+        GameObject explosion =  Instantiate(explosionFx, transform.position, Quaternion.identity);
+        explosion.transform.localScale *= (radius + 1);
+        Destroy(explosion, .2f);
+    }
+
+    void DoCameraShake()
+    {
+        Camera.main.GetComponent<CameraShake>().shakeDuration = 0.2f;
+
+    }
 }

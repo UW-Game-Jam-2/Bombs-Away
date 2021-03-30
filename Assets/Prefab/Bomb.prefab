@@ -102,6 +102,7 @@ MonoBehaviour:
   terrainLayer:
     serializedVersion: 2
     m_Bits: 256
+  explosionFx: {fileID: 1899165368049188656, guid: abdbe69be99fe43b3b18a6f64687c89f, type: 3}
 --- !u!50 &-6147480577369627067
 Rigidbody2D:
   serializedVersion: 4
