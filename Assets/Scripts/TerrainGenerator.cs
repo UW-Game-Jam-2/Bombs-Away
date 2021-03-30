@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
+/// <summary>
+///  Currently unused, but could be cool to create random levels.
+/// </summary>
 public class TerrainGenerator : MonoBehaviour
 {
 

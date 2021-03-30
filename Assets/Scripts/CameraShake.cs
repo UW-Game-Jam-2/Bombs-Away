@@ -1,6 +1,8 @@
 using UnityEngine;
 using System.Collections;
 
+// taken from https://gist.github.com/ftvs/5822103
+
 public class CameraShake : MonoBehaviour
 {
 	// Transform of the camera to shake. Grabs the gameObject's transform

@@ -13,12 +13,13 @@ public class ProjectileSpawner : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             Vector3 spawnPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            spawnPosition.z = 1;
+            spawnPosition.z = 0;
             SpawnProjectileAtLocation(spawnPosition);
 
         }
     }
 
+    // Spawns a bomb prefab
     void SpawnProjectileAtLocation(Vector3 spawnPosition)
     {
         Instantiate(bombPrefab, spawnPosition, Quaternion.identity);

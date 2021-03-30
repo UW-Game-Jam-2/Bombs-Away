@@ -2,15 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Script to control the projectiles once they are spawned.
 public class ProjectileScript : MonoBehaviour
 {
     public float detonateTime = 1;
     public float radius;
-
-    public LayerMask terrainLayer;
+    public float cameraShakeDuration = 0.2f;
+    public float explosionDuration = 0.2f;
 
     public GameObject explosionFx;
-    
 
     SpriteRenderer spriteRenderer;
 
@@ -22,6 +22,7 @@ public class ProjectileScript : MonoBehaviour
         StartCoroutine(TickBomb());
     }
 
+    // Function to make the bomb flicker white and red 
     IEnumerator TickBomb()
     {
         Invoke("Detonate", detonateTime);
@@ -34,6 +35,7 @@ public class ProjectileScript : MonoBehaviour
         }
     }
 
+    // Makes calls to explode the bomb, spawn an explosion and shake the camera.
     void Detonate()
     {
         TerrainDestroyer.instance.DestroyTerrain(transform.position, radius);
@@ -44,17 +46,18 @@ public class ProjectileScript : MonoBehaviour
         Destroy(gameObject);
     }
 
-
+    // Instantiates and plays the explosion animation.  Destroyed after 
     void SpawnExplosionFX()
     {
         GameObject explosion =  Instantiate(explosionFx, transform.position, Quaternion.identity);
         explosion.transform.localScale *= (radius + 1);
-        Destroy(explosion, .2f);
+        Destroy(explosion, explosionDuration);
     }
 
+    // Calls the camera to shake
     void DoCameraShake()
     {
-        Camera.main.GetComponent<CameraShake>().shakeDuration = 0.2f;
+        Camera.main.GetComponent<CameraShake>().shakeDuration = cameraShakeDuration;
 
     }
 }
