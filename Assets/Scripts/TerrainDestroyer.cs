@@ -38,7 +38,7 @@ public class TerrainDestroyer : MonoBehaviour
     }
 
     // Sets the tile in the foreground to nil and draws the background tile.
-    public void DestroyTile(Vector3Int tilePosition)
+    void DestroyTile(Vector3Int tilePosition)
     {
         terrain.SetTile(tilePosition, null);
         backgroundTerrain.SetTile(tilePosition, explodedTile);
