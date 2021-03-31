@@ -5,7 +5,8 @@ using UnityEngine;
 public class ProjectileSpawner : MonoBehaviour
 {
 
-    public GameObject bombPrefab;
+    public GameObject[] bombPrefabs;
+    public ExplosionType explosionType;
 
     // Update is called once per frame
     void Update()
@@ -22,6 +23,14 @@ public class ProjectileSpawner : MonoBehaviour
     // Spawns a bomb prefab
     void SpawnProjectileAtLocation(Vector3 spawnPosition)
     {
-        Instantiate(bombPrefab, spawnPosition, Quaternion.identity);
+        if (explosionType.Equals(ExplosionType.BASIC)) {
+            Instantiate(bombPrefabs[0], spawnPosition, Quaternion.identity);
+        } else if (explosionType.Equals(ExplosionType.HORIZONTAL)) {
+            Instantiate(bombPrefabs[1], spawnPosition, Quaternion.identity);
+        } else if (explosionType.Equals(ExplosionType.VERTICAL)) {
+            Instantiate(bombPrefabs[2], spawnPosition, Quaternion.identity);
+        } else if (explosionType.Equals(ExplosionType.MOAB)) {
+            Instantiate(bombPrefabs[3], spawnPosition, Quaternion.identity);
+        }
     }
 }
