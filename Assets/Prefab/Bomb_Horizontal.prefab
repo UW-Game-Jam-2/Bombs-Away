@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 747453146520427578}
   m_Layer: 0
   m_Name: Bomb_Horizontal
-  m_TagString: Untagged
+  m_TagString: Bomb
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -72,7 +72,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 461682061
-  m_SortingLayer: 1
+  m_SortingLayer: -1
   m_SortingOrder: 1
   m_Sprite: {fileID: -1609426497797727180, guid: 7387a7cc5358f457db6bb02addd178b8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -166,7 +166,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 406694d0774f4834cb357cd89b113ed6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  detonateTime: 2
+  detonateTime: 4
   cameraShakeDuration: 0.2
   explosionDuration: 0.2
+  explodeBombEvent: {fileID: 11400000, guid: 0077c40063ea24b70b740c3d6dd7d240, type: 2}
   explosionFx: {fileID: 1899165368049188656, guid: abdbe69be99fe43b3b18a6f64687c89f, type: 3}

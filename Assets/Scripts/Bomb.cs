@@ -9,6 +9,7 @@ public class Bomb: MonoBehaviour
     public float detonateTime = 1;
     public float cameraShakeDuration = 0.2f;
     public float explosionDuration = 0.2f;
+    public GameEvent explodeBombEvent;
 
     public ExplosionType explosionType { get; set; }
     public float explosionRadius { get; set; }
@@ -39,6 +40,8 @@ public class Bomb: MonoBehaviour
     // Makes calls to explode the bomb, spawn an explosion and shake the camera.
     void Detonate() {
         DestroyTerrain();
+
+        explodeBombEvent.Raise();
 
         SpawnExplosionFX();
         DoCameraShake();
