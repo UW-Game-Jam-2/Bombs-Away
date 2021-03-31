@@ -41,6 +41,5 @@ public class TerrainDestroyer : MonoBehaviour
     void DestroyTile(Vector3Int tilePosition)
     {
         terrain.SetTile(tilePosition, null);
-        backgroundTerrain.SetTile(tilePosition, explodedTile);
     }
 }
