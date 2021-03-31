@@ -10,6 +10,8 @@ public class ProjectileScript : MonoBehaviour
     public float cameraShakeDuration = 0.2f;
     public float explosionDuration = 0.2f;
 
+    public ExplosionType explosionType = ExplosionType.BASIC;
+
     public GameObject explosionFx;
 
     SpriteRenderer spriteRenderer;
@@ -38,7 +40,7 @@ public class ProjectileScript : MonoBehaviour
     // Makes calls to explode the bomb, spawn an explosion and shake the camera.
     void Detonate()
     {
-        TerrainDestroyer.instance.DestroyTerrain(transform.position, radius);
+        //TerrainDestroyer.instance.DestroyTerrain(transform.position, radius, explosionType);
 
         SpawnExplosionFX();
         DoCameraShake();

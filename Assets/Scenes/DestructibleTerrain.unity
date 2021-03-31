@@ -24029,7 +24029,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e719ba7675c949beb97030f5564c920, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bombPrefab: {fileID: 6626840090696020865, guid: e7e9b66dbb5c14433b04026cfa47d070, type: 3}
+  bombPrefab: {fileID: 5698123290662842831, guid: 15e9a8bfea422354aa96cb3fd8638bdf, type: 3}
 --- !u!4 &1670411732
 Transform:
   m_ObjectHideFlags: 0
