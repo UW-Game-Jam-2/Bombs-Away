@@ -44,6 +44,8 @@ public class ProjectileScript : MonoBehaviour
         SpawnExplosionFX();
         DoCameraShake();
 
+
+
         Destroy(gameObject);
     }
 

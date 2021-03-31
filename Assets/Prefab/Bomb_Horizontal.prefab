@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 747453146520427578}
   m_Layer: 0
   m_Name: Bomb_Horizontal
-  m_TagString: Untagged
+  m_TagString: Bomb
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -169,4 +169,5 @@ MonoBehaviour:
   detonateTime: 4
   cameraShakeDuration: 0.2
   explosionDuration: 0.2
+  explodeBombEvent: {fileID: 11400000, guid: 0077c40063ea24b70b740c3d6dd7d240, type: 2}
   explosionFx: {fileID: 1899165368049188656, guid: abdbe69be99fe43b3b18a6f64687c89f, type: 3}
