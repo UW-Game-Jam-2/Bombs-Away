@@ -7,5 +7,6 @@ public enum ExplosionType
     BASIC,
     VERTICAL,
     HORIZONTAL,
-    MOAB
+    MOAB,
+    CLUSTER
 }
