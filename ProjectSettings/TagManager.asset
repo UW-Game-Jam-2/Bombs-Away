@@ -43,6 +43,9 @@ TagManager:
   - name: Background Tile Map
     uniqueID: 461682061
     locked: 0
+  - name: Loot Tilemap
+    uniqueID: 2456797293
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0

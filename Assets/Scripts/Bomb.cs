@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using System;
 
 public class Bomb: MonoBehaviour
 {
@@ -9,7 +10,11 @@ public class Bomb: MonoBehaviour
     public float detonateTime = 1;
     public float cameraShakeDuration = 0.2f;
     public float explosionDuration = 0.2f;
+    public float explosionMultiplier = 1.0f;
     public GameEvent explodeBombEvent;
+
+    // Event that is triggered when the bomb explodes
+    public static event Action detonate; 
 
     public ExplosionType explosionType { get; set; }
     public float explosionRadius { get; set; }
@@ -44,6 +49,9 @@ public class Bomb: MonoBehaviour
 
         explodeBombEvent.Raise();
 
+        // this call must happen after `DestroyTerrain()` 
+        detonate?.Invoke();
+
         SpawnExplosionFX();
         DoCameraShake();
 
@@ -64,8 +72,10 @@ public class Bomb: MonoBehaviour
     }
 
     public void DestroyTerrain() {
-        for (float x = -xExplosionDistance; x < xExplosionDistance; x += 0.05f) {
-            for (float y = -yExplosionDistance; y < yExplosionDistance; y += 0.05f) {
+        float modifiedExplosionXDistance = explosionMultiplier * xExplosionDistance;
+        float modifiedExplosionYDistance = explosionMultiplier * yExplosionDistance;
+        for (float x = -modifiedExplosionXDistance; x < modifiedExplosionXDistance; x += 0.05f) {
+            for (float y = -modifiedExplosionYDistance; y < modifiedExplosionYDistance; y += 0.05f) {
                 if (Mathf.Pow(x, 2) + Mathf.Pow(y, 2) < Mathf.Pow(explosionImpactDistance, 2)) {
                     Vector3 translatedPosition = transform.position + new Vector3(x, y, 0);
                     TerrainDestroyer.instance.DestroyTerrain_Bomb(translatedPosition);
