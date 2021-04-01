@@ -15,14 +15,14 @@ public class BombSelector : MonoBehaviour
         bombIndicator = GetComponentInChildren<BombIndicator>();
         for (int index = 0; index < maxBombs; index++)
         {
-            PopulateNextBomb(index);
+            PopulateNextBomb();
         }
     }
 
-    public GameObject GetNextBomb()
+    public GameObject GetNextBombAndPopulateNext()
     {
         GameObject nextBomb = DequeueBomb();
-        PopulateNextBomb(2);
+        PopulateNextBomb();
         return nextBomb;
     }
 
@@ -31,7 +31,7 @@ public class BombSelector : MonoBehaviour
         return bombPrefabs[Random.Range(0, bombPrefabs.Length)];
     }
 
-    private void PopulateNextBomb(int index)
+    private void PopulateNextBomb()
     {
         GameObject nextBomb = ChooseNextBomb();
         Bomb bomb = nextBomb.GetComponent<Bomb>();

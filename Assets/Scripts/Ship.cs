@@ -36,7 +36,7 @@ public class Ship : MonoBehaviour
     private GameObject GetNextBomb()
     {
         GameObject bombObject = GameObject.FindGameObjectsWithTag("Bomb Selection")[0];
-        return bombObject.GetComponent<BombSelector>().GetNextBomb();
+        return bombObject.GetComponent<BombSelector>().GetNextBombAndPopulateNext();
     }
 
     
