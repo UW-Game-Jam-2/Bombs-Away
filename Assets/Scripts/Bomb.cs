@@ -18,6 +18,7 @@ public class Bomb: MonoBehaviour
     public float explosionImpactDistance { get; set; }
 
     public GameObject explosionFx;
+    public Sprite bombRepresentation;
     SpriteRenderer spriteRenderer;
 
     private void Start() {

@@ -24,10 +24,19 @@ public class Ship : MonoBehaviour
         if (Input.GetButtonDown("FireBomb"))
         {
             Renderer renderer = GetComponent<Renderer>();
+            // The new spawn position is y minus the space that the ship occupies
+            // so that the projectiles start from the bottom of the ship.
             Vector3 spawnPosition = new Vector3(transform.position.x, transform.position.y - renderer.bounds.extents.y);
-            projectileSpawner.SpawnProjectileAtLocation(spawnPosition);
+            
+            projectileSpawner.SpawnProjectileAtLocation(spawnPosition, GetNextBomb());
 
         }
+    }
+
+    private GameObject GetNextBomb()
+    {
+        GameObject bombObject = GameObject.FindGameObjectsWithTag("Bomb Selection")[0];
+        return bombObject.GetComponent<BombSelector>().GetNextBomb();
     }
 
     

@@ -17,7 +17,7 @@ public class Wind : MonoBehaviour
     void Start()
     {
         windIndicator = GetComponentInChildren<WindIndicator>();
-        updateIndicator();
+        UpdateIndicator();
     }
 
     // Update is called once per frame
@@ -25,28 +25,28 @@ public class Wind : MonoBehaviour
     {
         foreach (GameObject bomb in getBombs())
         {
-            applyForceToBomb(bomb);
+            ApplyForceToBomb(bomb);
         }
     }
 
     public void BombDetonationEvent()
     {
-        updateIndicator();
+        UpdateIndicator();
     }
 
-    private void updateIndicator()
+    private void UpdateIndicator()
     {
-        refreshWindValues();
+        RefreshWindValues();
         windIndicator.UpdateWindIndicator(currentWindDirection, currentWindStrength);
     }
 
-    private void refreshWindValues()
+    private void RefreshWindValues()
     {
-        currentWindStrength = Random.Range(1, maxWindStrength + 1);
+        currentWindStrength = Random.Range(0, maxWindStrength + 1);
         currentWindDirection = windDirections[Random.Range(0, 2)];
     }
 
-    private void applyForceToBomb(GameObject bomb)
+    private void ApplyForceToBomb(GameObject bomb)
     {
         Vector3 forceDirection;
         if (currentWindDirection == WindDirection.LEFT)
