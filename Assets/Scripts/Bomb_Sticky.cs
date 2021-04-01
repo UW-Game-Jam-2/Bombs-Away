@@ -10,10 +10,6 @@ public class Bomb_Sticky : Bomb
         xExplosionDistance = explosionRadius;
         yExplosionDistance = explosionRadius;
         explosionImpactDistance = explosionRadius;
-
-        Debug.Log("Sticky Bomb");
-        //Rigidbody2D rb = GetComponent<Rigidbody2D>();
-        //rb.isKinematic = true;
     }
 
     private void OnCollisionEnter2D(Collision2D collision) {
