@@ -38,7 +38,7 @@ public class Bomb: MonoBehaviour
     }
 
     // Makes calls to explode the bomb, spawn an explosion and shake the camera.
-    void Detonate() {
+    protected virtual void Detonate() {
         DestroyTerrain();
 
         explodeBombEvent.Raise();
@@ -50,14 +50,14 @@ public class Bomb: MonoBehaviour
     }
 
     // Instantiates and plays the explosion animation.  Destroyed after 
-    void SpawnExplosionFX() {
+    protected void SpawnExplosionFX() {
         GameObject explosion = Instantiate(explosionFx, transform.position, Quaternion.identity);
         explosion.transform.localScale *= (explosionRadius + 1);
         Destroy(explosion, explosionDuration);
     }
 
     // Calls the camera to shake
-    void DoCameraShake() {
+    protected void DoCameraShake() {
         Camera.main.GetComponent<CameraShake>().shakeDuration = cameraShakeDuration;
 
     }
