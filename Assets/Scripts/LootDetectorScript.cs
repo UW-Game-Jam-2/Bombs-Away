@@ -57,10 +57,6 @@ public class LootDetectorScript: MonoBehaviour
 
                     if (lootTile != null)
                     {
-                    print($"Foreground tile location {foregroundTilePosition}");
-                    print($"Loot tile {lootTile} this is the loot tile");
-                        foregroundTilemap.SetTile(foregroundTilePosition, debugTile);
-
                         // At this point there IS a foreground tile AND loot tile. Save this information for later!
 
                         // Create a list or grab the one that already exists
@@ -68,7 +64,6 @@ public class LootDetectorScript: MonoBehaviour
 
                         if (listOfForegroundTiles.Count == 0)
                         {
-                            print($"Loot tile location {lootTileLocation} new array");
                             // There is NO list, so let's start saving one
                             List <Vector3Int> newList = new List<Vector3Int>();
                             newList.Add(foregroundTilePosition);
@@ -77,7 +72,6 @@ public class LootDetectorScript: MonoBehaviour
                         }
                         else
                         {
-                            print($"Loot tile location {lootTileLocation} old array");
                             // There IS a list, so just append to it and add it back to the dictionary
                             listOfForegroundTiles.Add(foregroundTilePosition);
                             lootToForegroundTiles[lootTileLocation] = listOfForegroundTiles;
