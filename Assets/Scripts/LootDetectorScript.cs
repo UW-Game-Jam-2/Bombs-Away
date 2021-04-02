@@ -2,23 +2,32 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using DG.Tweening;
 
 // Listens for bomb explosions and checks to see if any loot has been uncovered
-public class LootDetectorScript : MonoBehaviour
+public class LootDetectorScript: MonoBehaviour
 {
 
+    public TileBase explodeTile;
     public Tilemap foregroundTilemap;
     public float percentToUncover = 0.75f;
-    public Animation lootExplosion;
+    public CoinManagerScript coinManager;
+
+    [Header ("Loot settings")]
+    
+    public GameObject treasurePrefab;
+    public int flashes = 10;
+    public float timeBetweenFlashes = 0.2f;
+    public Color alertColor = Color.red;
+    public int coinsPerLootBase = 15;
+    public float coinPerLootVariance = 5.0f;
 
     private Tilemap lootTilemap;
     private List<Vector3> tileWorldLocations;
     private float lootToForegroundScaleRatio;
-    private SpriteRenderer spriteRenderer;
 
     private void Start()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
         lootTilemap = GetComponent<Tilemap>();
 
         tileWorldLocations = new List<Vector3>();
@@ -30,29 +39,22 @@ public class LootDetectorScript : MonoBehaviour
             if (lootTilemap.HasTile(localPlace))
             {
                 tileWorldLocations.Add(place);
-                print(place);
             }
         }
 
         // set up other cosntants
         lootToForegroundScaleRatio = lootTilemap.transform.localScale.x / foregroundTilemap.transform.localScale.x;
+
     }
 
     void OnEnable()
     {
-        Bomb.detonate += CheckForLoot;
+        Bomb.detonate += CheckLocationIsUncovered;
     }
 
-    private void OnDisable()
+    void OnDisable()
     {
-        Bomb.detonate -= CheckForLoot;
-    }
-
-    void CheckForLoot()
-    {
-        print("checking");
-        CheckLocationIsUncovered();
-
+        Bomb.detonate -= CheckLocationIsUncovered;
     }
 
     void CheckLocationIsUncovered()
@@ -61,13 +63,54 @@ public class LootDetectorScript : MonoBehaviour
         {
             Vector3Int foregroundTile = foregroundTilemap.WorldToCell(worldLocation);
             Vector3Int lootTileLocation = lootTilemap.WorldToCell(worldLocation);
-            if (foregroundTilemap.GetTile(foregroundTile) == null && lootTilemap.GetTile(lootTileLocation) != null)
+            if (foregroundTilemap.GetTile(foregroundTile) == null)
             {
-                print("im free");
-                lootExplosion.transform.position = worldLocation;
-                lootExplosion.Play();
-                lootTilemap.SetTile(lootTileLocation, null);
+                TileBase tile = lootTilemap.GetTile(lootTileLocation);
+                if (tile != null)
+                {
+                    // remove the loot item from the loot map
+                    lootTilemap.SetTile(lootTileLocation, null);
+                    GameObject lootPrefab = Instantiate(treasurePrefab, worldLocation, Quaternion.identity);
+
+                    // active the loot prefab
+                    lootPrefab.SetActive(true);
+
+                    // move the loot prefab to the correct location
+                    float collectedCoins = coinsPerLootBase + Random.Range(-coinPerLootVariance, coinPerLootVariance);
+
+                    StartCoroutine(TickLoot(lootPrefab, (int)collectedCoins, worldLocation));
+
+                }
             }
         }
     }
+
+    // Function to make the loot flicker then collect coins 
+    IEnumerator TickLoot(GameObject loot, int coinsCollected, Vector3 worldLocation)
+    {
+
+        /// flash a color
+        for (int i = 0; i < flashes; i++)
+        {
+            Color currentColor = loot.GetComponent<SpriteRenderer>().color;
+            if (currentColor == alertColor)
+            {
+                loot.GetComponent<SpriteRenderer>().color = Color.white;
+
+            } else
+            {
+                loot.GetComponent<SpriteRenderer>().color = alertColor;
+            }
+            yield return new WaitForSeconds(timeBetweenFlashes);
+        }
+
+        // destory the prefab
+        Destroy(loot);
+
+        // tell the coin manager to do its thing.
+        coinManager.CollectCoins(worldLocation, coinsCollected);
+
+
+    }
+
 }

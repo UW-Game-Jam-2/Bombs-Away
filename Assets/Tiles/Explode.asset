@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13b75c95f34a00d4e8c04f76b73312e6, type: 3}
+  m_Name: Explode
+  m_EditorClassIdentifier: 
+  m_AnimatedSprites:
+  - {fileID: 3009759021191781031, guid: 44e743377687f4960bc22bcc84235fe3, type: 3}
+  - {fileID: 4125273575021531130, guid: 44e743377687f4960bc22bcc84235fe3, type: 3}
+  - {fileID: -5768744643598621583, guid: 44e743377687f4960bc22bcc84235fe3, type: 3}
+  - {fileID: 6651355480314229951, guid: 44e743377687f4960bc22bcc84235fe3, type: 3}
+  - {fileID: -2284971780706493476, guid: 44e743377687f4960bc22bcc84235fe3, type: 3}
+  - {fileID: 3880030287988175183, guid: 44e743377687f4960bc22bcc84235fe3, type: 3}
+  m_MinSpeed: 1
+  m_MaxSpeed: 2
+  m_AnimationStartTime: 0
+  m_AnimationStartFrame: 0
+  m_TileColliderType: 0
