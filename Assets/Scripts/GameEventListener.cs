@@ -7,7 +7,7 @@ public class GameEventListener : MonoBehaviour
 {
     // The game event instance to register to.
     public GameEvent GameEvent;
-    // The unity event responce created for the event.
+    // The unity event response created for the event.
     public UnityEvent Response;
 
     private void OnEnable()

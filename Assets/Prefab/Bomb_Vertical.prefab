@@ -71,7 +71,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 461682061
+  m_SortingLayerID: -1838170003
   m_SortingLayer: -1
   m_SortingOrder: 1
   m_Sprite: {fileID: -1609426497797727180, guid: 7387a7cc5358f457db6bb02addd178b8, type: 3}
@@ -169,6 +169,7 @@ MonoBehaviour:
   detonateTime: 2
   cameraShakeDuration: 0.2
   explosionDuration: 0.2
+  explosionMultiplier: 5
   explodeBombEvent: {fileID: 11400000, guid: 0077c40063ea24b70b740c3d6dd7d240, type: 2}
   explosionFx: {fileID: 1899165368049188656, guid: abdbe69be99fe43b3b18a6f64687c89f, type: 3}
   bombRepresentation: {fileID: 21300000, guid: 4327ff2f8f5e24f7caea2e489b6ae898, type: 3}
