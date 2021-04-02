@@ -21,30 +21,72 @@ public class LootDetectorScript: MonoBehaviour
     public Color alertColor = Color.red;
     public int coinsPerLootBase = 15;
     public float coinPerLootVariance = 5.0f;
+    public TileBase debugTile;
 
     private Tilemap lootTilemap;
-    private List<Vector3> tileWorldLocations;
-    private float lootToForegroundScaleRatio;
+    private Dictionary<Vector3Int, List<Vector3Int>> lootToForegroundTiles;
 
     private void Start()
     {
+        // gran the loot tile map
         lootTilemap = GetComponent<Tilemap>();
 
-        tileWorldLocations = new List<Vector3>();
+        // Create a map of Loot Tile coordinates to an array of Foreground tile coordinates.
+        // This will be used later on to determine if a loot tile is some % uncovered.
+        lootToForegroundTiles = new Dictionary<Vector3Int, List<Vector3Int>>();
 
-        foreach (var pos in lootTilemap.cellBounds.allPositionsWithin)
+
+        // Iterate over the foregorund cell by cell
+        // For any foreground cell located over a loot tile, save this in a dictionary that maps loot tiles to an array of foreground cells
+        // Because Loot tiles are scaled to be 4 times bigger than Foreground tiles, the value for each loot tile key entry can map to up a List of up to 16 foreground tiles
+        for (int x = foregroundTilemap.cellBounds.min.x; x < foregroundTilemap.cellBounds.max.x; x++)
         {
-            Vector3Int localPlace = new Vector3Int(pos.x, pos.y, pos.z);
-            Vector3 place = lootTilemap.CellToWorld(localPlace);
-            if (lootTilemap.HasTile(localPlace))
+            for (int y = foregroundTilemap.cellBounds.min.y; y < foregroundTilemap.cellBounds.max.y; y++)
             {
-                tileWorldLocations.Add(place);
+                Vector3Int foregroundTilePosition = new Vector3Int(x, y, 0);
+                TileBase tile = foregroundTilemap.GetTile(foregroundTilePosition);
+
+                Vector3 foregroundWorldPosition = foregroundTilemap.CellToWorld(foregroundTilePosition);
+
+                Vector3Int lootTileLocation = lootTilemap.WorldToCell(foregroundWorldPosition);
+
+
+                if (tile != null)
+                {
+                    TileBase lootTile = lootTilemap.GetTile(lootTileLocation);
+
+                    if (lootTile != null)
+                    {
+                    print($"Foreground tile location {foregroundTilePosition}");
+                    print($"Loot tile {lootTile} this is the loot tile");
+                        foregroundTilemap.SetTile(foregroundTilePosition, debugTile);
+
+                        // At this point there IS a foreground tile AND loot tile. Save this information for later!
+
+                        // Create a list or grab the one that already exists
+                        List<Vector3Int> listOfForegroundTiles = lootToForegroundTiles.ContainsKey(lootTileLocation) ? lootToForegroundTiles[lootTileLocation] : new List<Vector3Int>();
+
+                        if (listOfForegroundTiles.Count == 0)
+                        {
+                            print($"Loot tile location {lootTileLocation} new array");
+                            // There is NO list, so let's start saving one
+                            List <Vector3Int> newList = new List<Vector3Int>();
+                            newList.Add(foregroundTilePosition);
+                            lootToForegroundTiles[lootTileLocation] = newList;
+
+                        }
+                        else
+                        {
+                            print($"Loot tile location {lootTileLocation} old array");
+                            // There IS a list, so just append to it and add it back to the dictionary
+                            listOfForegroundTiles.Add(foregroundTilePosition);
+                            lootToForegroundTiles[lootTileLocation] = listOfForegroundTiles;
+                        }
+                    } 
+                }
             }
+
         }
-
-        // set up other cosntants
-        lootToForegroundScaleRatio = lootTilemap.transform.localScale.x / foregroundTilemap.transform.localScale.x;
-
     }
 
     void OnEnable()
@@ -59,30 +101,64 @@ public class LootDetectorScript: MonoBehaviour
 
     void CheckLocationIsUncovered()
     {
-        foreach (var worldLocation in tileWorldLocations)
+
+        // keep track of the loot tiles that have NOT need collected
+        var updatedLootToForegroundTiles = new Dictionary<Vector3Int, List<Vector3Int>>();
+
+        foreach (KeyValuePair<Vector3Int, List<Vector3Int>> kvp in lootToForegroundTiles)
         {
-            Vector3Int foregroundTile = foregroundTilemap.WorldToCell(worldLocation);
-            Vector3Int lootTileLocation = lootTilemap.WorldToCell(worldLocation);
-            if (foregroundTilemap.GetTile(foregroundTile) == null)
+            // grab some properties for the loot tile
+            Vector3Int lootTileLocation = kvp.Key;
+            Vector3 lootTileWorldLocation = lootTilemap.CellToWorld(lootTileLocation);
+            TileBase lootTile = lootTilemap.GetTile(kvp.Key);
+
+            // keep track of the destroyed count
+            int destroyedCount = 0;
+            int startingCount = kvp.Value.Count;
+            foreach (Vector3Int foregroundTileLocation in kvp.Value)
             {
-                TileBase tile = lootTilemap.GetTile(lootTileLocation);
-                if (tile != null)
+                TileBase foregroundTile = foregroundTilemap.GetTile(foregroundTileLocation);
+
+                if (foregroundTile == null)
                 {
-                    // remove the loot item from the loot map
-                    lootTilemap.SetTile(lootTileLocation, null);
-                    GameObject lootPrefab = Instantiate(treasurePrefab, worldLocation, Quaternion.identity);
+                    destroyedCount++;
+                } 
+            }
 
-                    // active the loot prefab
-                    lootPrefab.SetActive(true);
+            // Check to see if the destoryed percentage is greater than the percent needed to uncover the treasure
+            if ((float)destroyedCount / (float)startingCount > percentToUncover)
+            {
 
-                    // move the loot prefab to the correct location
-                    float collectedCoins = coinsPerLootBase + Random.Range(-coinPerLootVariance, coinPerLootVariance);
+                // grab the rendered from the treasure prefab to use to shift the sprite
+                SpriteRenderer renderer = treasurePrefab.GetComponent<SpriteRenderer>();
 
-                    StartCoroutine(TickLoot(lootPrefab, (int)collectedCoins, worldLocation));
+                // shift the sprite up and over 1/2 the width and height (this accounts for the fact that the lootTileWorldLocation is at the bottom left of the tile
+                Vector3 shiftedLootTileLocation = lootTileWorldLocation + new Vector3(x: renderer.bounds.size.x/2, y: renderer.bounds.size.y/2);
 
-                }
+                // remove the loot item from the loot map
+                lootTilemap.SetTile(lootTileLocation, null);
+
+                // create the loot object using the provided prefab at the shifted location
+                GameObject lootPrefab = Instantiate(treasurePrefab, shiftedLootTileLocation, Quaternion.identity);
+
+                // active the loot prefab
+                lootPrefab.SetActive(true);
+
+                // move the loot prefab to the correct location
+                float collectedCoins = coinsPerLootBase + Random.Range(-coinPerLootVariance, coinPerLootVariance);
+
+                // start a cortoutine that flickers the loot and then calls collect coins
+                StartCoroutine(TickLoot(lootPrefab, (int)collectedCoins, lootTileWorldLocation));
+            }
+            else
+            {
+                // otherwise add the key value entry into the new dictionary so that we can check these later on
+                updatedLootToForegroundTiles[kvp.Key] = kvp.Value;
             }
         }
+
+        // update the loot to foreground store so that we dont collect loot multiple times
+        lootToForegroundTiles = updatedLootToForegroundTiles;
     }
 
     // Function to make the loot flicker then collect coins 
