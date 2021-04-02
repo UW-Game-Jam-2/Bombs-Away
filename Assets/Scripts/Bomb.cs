@@ -30,6 +30,7 @@ public class Bomb: MonoBehaviour
     private void Start() {
         spriteRenderer = GetComponent<SpriteRenderer>();
 
+
         StartCoroutine(TickBomb());
     }
 
@@ -74,22 +75,34 @@ public class Bomb: MonoBehaviour
 
     public void DestroyTerrain() {
         float modifiedExplosionXDistance = explosionXMultiplier * xExplosionDistance;
-        print($"Normal distance is {xExplosionDistance}.  Exploded distance is {modifiedExplosionXDistance}");
         float modifiedExplosionYDistance = explosionYMultiplier * yExplosionDistance;
-        //print($"Normal distance is {xExplosionDistance}.  Exploded distance is {modifiedExplosionXDistance}");
+
+        List<Vector3> positionToDestory = new List<Vector3>();
+
         for (float x = -modifiedExplosionXDistance; x < modifiedExplosionXDistance; x += 0.05f) {
             for (float y = -modifiedExplosionYDistance; y < modifiedExplosionYDistance; y += 0.05f) {
+
+                // Check the X axis to see if this tile falls in the modified X direction
                 if (Mathf.Pow(x, 2) + Mathf.Pow(y, 2) < Mathf.Pow(explosionImpactDistance*modifiedExplosionXDistance , 2)) {
                     Vector3 translatedPosition = transform.position + new Vector3(x, y, 0);
-                    TerrainDestroyer.instance.DestroyTerrain_Bomb(translatedPosition);
+                    positionToDestory.Add(translatedPosition);
+                    //TerrainDestroyer.instance.DestroyTerrain_Bomb(translatedPosition);
                 }
 
+
+                // Check the Y axis to see if this tile falls in the modified Y direction
                 if (Mathf.Pow(x, 2) + Mathf.Pow(y, 2) < Mathf.Pow(explosionImpactDistance * modifiedExplosionYDistance, 2))
                 {
                     Vector3 translatedPosition = transform.position + new Vector3(x, y, 0);
-                    TerrainDestroyer.instance.DestroyTerrain_Bomb(translatedPosition);
+                    positionToDestory.Add(translatedPosition);
+                    //TerrainDestroyer.instance.DestroyTerrain_Bomb(translatedPosition);
                 }
             }
         }
+
+        // pass in all the affected positions and the source of the explosion
+        TerrainDestroyer.instance.DestoryTerrain_Positions(positionToDestory, transform.position);// + new Vector3(spriteRenderer.bounds.size.x / 2, spriteRenderer.bounds.size.y / 2));
     }
+
+ 
 }
