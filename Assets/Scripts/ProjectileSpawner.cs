@@ -15,15 +15,15 @@ public class ProjectileSpawner : MonoBehaviour
         {
             Vector3 spawnPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             spawnPosition.z = 0;
-            SpawnProjectileAtLocation(spawnPosition);
+            SpawnProjectileAtLocation(spawnPosition, RandomizeBomb());
 
         }
     }
 
     // Spawns a bomb prefab
-    public void SpawnProjectileAtLocation(Vector3 spawnPosition)
+    public void SpawnProjectileAtLocation(Vector3 spawnPosition, GameObject bomb)
     {
-        Instantiate(RandomizeBomb(), spawnPosition, Quaternion.identity);
+        Instantiate(bomb, spawnPosition, Quaternion.identity);
     }
 
     private GameObject RandomizeBomb()

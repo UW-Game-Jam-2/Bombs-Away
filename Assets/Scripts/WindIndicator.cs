@@ -10,7 +10,7 @@ public class WindIndicator : MonoBehaviour
 
     public void UpdateWindIndicator(WindDirection windDirection, int winStrength)
     {
-        clearIndicator();
+        ClearIndicator();
         GameObject prefabWind;
         if (windDirection == WindDirection.LEFT)
         {
@@ -30,7 +30,7 @@ public class WindIndicator : MonoBehaviour
         }
     }
 
-    private void clearIndicator()
+    private void ClearIndicator()
     {
         foreach (Transform child in transform)
         {

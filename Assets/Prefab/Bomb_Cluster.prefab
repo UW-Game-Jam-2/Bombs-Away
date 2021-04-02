@@ -171,4 +171,5 @@ MonoBehaviour:
   explosionDuration: 0.2
   explodeBombEvent: {fileID: 11400000, guid: 0077c40063ea24b70b740c3d6dd7d240, type: 2}
   explosionFx: {fileID: 1899165368049188656, guid: abdbe69be99fe43b3b18a6f64687c89f, type: 3}
+  bombRepresentation: {fileID: 21300000, guid: 0f7c21d366a814cdd983aec3299ba5e6, type: 3}
   bombToSpawn: {fileID: 6626840090696020865, guid: e7e9b66dbb5c14433b04026cfa47d070, type: 3}
