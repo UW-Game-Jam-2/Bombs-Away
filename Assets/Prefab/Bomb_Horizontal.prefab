@@ -169,7 +169,8 @@ MonoBehaviour:
   detonateTime: 4
   cameraShakeDuration: 0.2
   explosionDuration: 0.2
-  explosionMultiplier: 5
+  explosionXMultiplier: 5
+  explosionYMultiplier: 1
   explodeBombEvent: {fileID: 11400000, guid: 0077c40063ea24b70b740c3d6dd7d240, type: 2}
   explosionFx: {fileID: 1899165368049188656, guid: abdbe69be99fe43b3b18a6f64687c89f, type: 3}
   bombRepresentation: {fileID: 21300000, guid: 29337f387d78a4589987f11854616078, type: 3}
