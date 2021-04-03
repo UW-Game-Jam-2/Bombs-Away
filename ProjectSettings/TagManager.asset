@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Bomb
   - Bomb Selection
+  - Boundary
   layers:
   - Default
   - TransparentFX

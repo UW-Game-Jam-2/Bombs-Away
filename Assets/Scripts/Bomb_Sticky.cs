@@ -13,7 +13,9 @@ public class Bomb_Sticky : Bomb
     }
 
     private void OnCollisionEnter2D(Collision2D collision) {
-        Rigidbody2D rb = GetComponent<Rigidbody2D>();
-        Destroy(rb);
+        if (collision.gameObject.CompareTag("Foreground")) {
+            Rigidbody2D rb = GetComponent<Rigidbody2D>();
+            Destroy(rb);
+        }
     }
 }
