@@ -26,8 +26,6 @@ public class LootDetectorScript: MonoBehaviour
 
     [Header("Ordinance Settings")]
     public float detonationTime = 0.5f;
-
-
     public TileBase debugTile;
 
     private Tilemap lootTilemap;
@@ -180,7 +178,6 @@ public class LootDetectorScript: MonoBehaviour
                 {
                     throw new ArgumentException("Game object cannot be null", nameof(gameObject));
                 }
-
             }
             else
             {

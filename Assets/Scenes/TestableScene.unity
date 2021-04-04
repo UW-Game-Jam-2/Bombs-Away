@@ -410,11 +410,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2434809523439854821, guid: f4f8bbc1d53f746039c4c66df2b9117a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.62
+      value: -1.768
       objectReference: {fileID: 0}
     - target: {fileID: 2434809523439854821, guid: f4f8bbc1d53f746039c4c66df2b9117a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.65
+      value: 3.248
       objectReference: {fileID: 0}
     - target: {fileID: 2434809523439854821, guid: f4f8bbc1d53f746039c4c66df2b9117a, type: 3}
       propertyPath: m_LocalPosition.z
@@ -52330,3 +52330,57 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab653ffa6db6d42498668f8f64659b29, type: 3}
+    - target: {fileID: 3034551153855907831, guid: 72d1eb3b9ffbb4ad7b7967e5c1f49dc0, type: 3}
+      propertyPath: coinManager
+      value: 
+      objectReference: {fileID: 788340792}
+    - target: {fileID: 5066279259141339468, guid: 72d1eb3b9ffbb4ad7b7967e5c1f49dc0, type: 3}
+      propertyPath: m_Name
+      value: DestructibleLootableGrid
+      objectReference: {fileID: 0}
+    - target: {fileID: 5066279259141339470, guid: 72d1eb3b9ffbb4ad7b7967e5c1f49dc0, type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5066279259141339470, guid: 72d1eb3b9ffbb4ad7b7967e5c1f49dc0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.74
+      objectReference: {fileID: 0}
+    - target: {fileID: 5066279259141339470, guid: 72d1eb3b9ffbb4ad7b7967e5c1f49dc0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.79
+      objectReference: {fileID: 0}
+    - target: {fileID: 5066279259141339470, guid: 72d1eb3b9ffbb4ad7b7967e5c1f49dc0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5066279259141339470, guid: 72d1eb3b9ffbb4ad7b7967e5c1f49dc0, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5066279259141339470, guid: 72d1eb3b9ffbb4ad7b7967e5c1f49dc0, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5066279259141339470, guid: 72d1eb3b9ffbb4ad7b7967e5c1f49dc0, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5066279259141339470, guid: 72d1eb3b9ffbb4ad7b7967e5c1f49dc0, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5066279259141339470, guid: 72d1eb3b9ffbb4ad7b7967e5c1f49dc0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5066279259141339470, guid: 72d1eb3b9ffbb4ad7b7967e5c1f49dc0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5066279259141339470, guid: 72d1eb3b9ffbb4ad7b7967e5c1f49dc0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 72d1eb3b9ffbb4ad7b7967e5c1f49dc0, type: 3}
