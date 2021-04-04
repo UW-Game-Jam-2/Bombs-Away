@@ -18,7 +18,10 @@ public class Ship : MonoBehaviour
     void Update()
     {
         float horizontalInput = Input.GetAxis("Horizontal");
-        transform.Translate(new Vector3(horizontalInput, 0, 0) * moveSpeed * Time.deltaTime);
+        //transform.Translate(new Vector3(horizontalInput, 0, 0) * moveSpeed * Time.deltaTime);
+        float xPos = transform.position.x;
+        xPos += horizontalInput * moveSpeed * Time.deltaTime;
+        transform.position = new Vector3(xPos, transform.position.y, transform.position.z) ;
 
         // Throw a bomb if the user pressed space
         if (Input.GetButtonDown("FireBomb"))

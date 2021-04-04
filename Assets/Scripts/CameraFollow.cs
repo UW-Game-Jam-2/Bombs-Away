@@ -23,14 +23,16 @@ public class CameraFollow : MonoBehaviour
         mainCam = GetComponent<Camera>();
         camOrthsize = mainCam.orthographicSize;
         cameraRatio = (xMax + camOrthsize) / 2.0f;
-        Debug.Log("xMin: " + xMin + ", xMax: " + xMax);
     }
 
     // Update is called once per frame
     void FixedUpdate() {
-        Debug.Log(followTransform.position.x);
         camX = Mathf.Clamp(followTransform.position.x, xMin + cameraRatio, xMax - cameraRatio);
         smoothPos = Vector3.Lerp(this.transform.position, new Vector3(camX, followTransform.position.y, this.transform.position.z), smoothSpeed);
-        this.transform.position = smoothPos;
+
+        //smoothPos = Vector3.Lerp(transform.position, new Vector3(followTransform.position.x, mainCam.transform.position.y), smoothSpeed);
+        //smoothPos = new Vector3(followTransform.position.x, mainCam.transform.position.y);
+
+        transform.position = smoothPos;
     }
 }
