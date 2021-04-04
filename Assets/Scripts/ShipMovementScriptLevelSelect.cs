@@ -1,4 +1,5 @@
 using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -9,6 +10,10 @@ public class ShipMovementScriptLevelSelect : MonoBehaviour
     [SerializeField] Rigidbody2D rigidBody;
     [SerializeField] float steeringPower;
     [SerializeField] float movementAcceleration;
+    [SerializeField] SceneFader sceneFader;
+
+    public static event Action<string> didCollideWithIsland;
+
 
     private float steeringAmount, speed, direction;
     private Vector2 movement;
@@ -33,7 +38,6 @@ public class ShipMovementScriptLevelSelect : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        print(collision.gameObject.name);
-        SceneManager.LoadScene(collision.gameObject.name);
+        didCollideWithIsland?.Invoke(collision.gameObject.name);
     }
 }
