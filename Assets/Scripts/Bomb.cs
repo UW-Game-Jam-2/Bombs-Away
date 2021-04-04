@@ -63,7 +63,7 @@ public class Bomb: MonoBehaviour
     // Instantiates and plays the explosion animation.  Destroyed after 
     protected void SpawnExplosionFX() {
         GameObject explosion = Instantiate(explosionFx, transform.position, Quaternion.identity);
-        explosion.transform.localScale *= (explosionRadius + 1);
+        explosion.transform.localScale *= (transform.localScale.x + (explosionRadius + 1));
         Destroy(explosion, explosionDuration);
     }
 

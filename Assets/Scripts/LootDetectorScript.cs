@@ -1,4 +1,5 @@
 using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
@@ -13,14 +14,18 @@ public class LootDetectorScript: MonoBehaviour
     public float percentToUncover = 0.75f;
     public CoinManagerScript coinManager;
 
+    [Space]
     [Header ("Loot settings")]
-    
-    public GameObject treasurePrefab;
+
+    public Color alertColor = Color.red;
     public int flashes = 10;
     public float timeBetweenFlashes = 0.2f;
-    public Color alertColor = Color.red;
-    public int coinsPerLootBase = 15;
-    public float coinPerLootVariance = 5.0f;
+
+    [Header ("Treasure Settings")]
+    public float timeBeforeTreasureDisappears = 0.5f;
+
+    [Header("Ordinance Settings")]
+    public float detonationTime = 0.5f;
     public TileBase debugTile;
 
     private Tilemap lootTilemap;
@@ -28,7 +33,7 @@ public class LootDetectorScript: MonoBehaviour
 
     private void Start()
     {
-        // gran the loot tile map
+        // grab the loot tile map
         lootTilemap = GetComponent<Tilemap>();
 
         // Create a map of Loot Tile coordinates to an array of Foreground tile coordinates.
@@ -122,27 +127,57 @@ public class LootDetectorScript: MonoBehaviour
             // Check to see if the destoryed percentage is greater than the percent needed to uncover the treasure
             if ((float)destroyedCount / (float)startingCount > percentToUncover)
             {
+                // get the data regarding how much loot is in the treasure
+                GameObject prefab = lootTilemap.GetInstantiatedObject(lootTileLocation);
 
                 // grab the rendered from the treasure prefab to use to shift the sprite
-                SpriteRenderer renderer = treasurePrefab.GetComponent<SpriteRenderer>();
+                SpriteRenderer renderer = prefab.GetComponent<SpriteRenderer>();
 
                 // shift the sprite up and over 1/2 the width and height (this accounts for the fact that the lootTileWorldLocation is at the bottom left of the tile
-                Vector3 shiftedLootTileLocation = lootTileWorldLocation + new Vector3(x: renderer.bounds.size.x/2, y: renderer.bounds.size.y/2);
+                Vector3 shiftedLootTileLocation = lootTileWorldLocation + new Vector3(x: renderer.bounds.size.x / 2, y: renderer.bounds.size.y / 2);
+
+                // create the loot object using the provided prefab at the shifted location
+                GameObject gameObject = Instantiate(prefab, shiftedLootTileLocation, Quaternion.identity);
 
                 // remove the loot item from the loot map
                 lootTilemap.SetTile(lootTileLocation, null);
 
-                // create the loot object using the provided prefab at the shifted location
-                GameObject lootPrefab = Instantiate(treasurePrefab, shiftedLootTileLocation, Quaternion.identity);
+                if (gameObject != null)
+                {
 
-                // active the loot prefab
-                lootPrefab.SetActive(true);
+                    // add the sprite to the screen
+                    gameObject.GetComponent<SpriteRenderer>().enabled = true;
+                    gameObject.transform.localScale = new Vector3(0.5f, 0.5f, 1.0f);
+                    gameObject.SetActive(true);
+                    gameObject.transform.position = shiftedLootTileLocation;
 
-                // move the loot prefab to the correct location
-                float collectedCoins = coinsPerLootBase + Random.Range(-coinPerLootVariance, coinPerLootVariance);
+                    TreasureTypeScript treasure;
+                    gameObject.TryGetComponent<TreasureTypeScript>(out treasure);
 
-                // start a cortoutine that flickers the loot and then calls collect coins
-                StartCoroutine(TickLoot(lootPrefab, (int)collectedCoins, lootTileWorldLocation));
+                    Bomb bomb;
+                    gameObject.TryGetComponent<Bomb>(out bomb);
+
+                    if (treasure != null)
+                    {
+                        int treasureToCollect = treasure.Amount();
+
+                        // start a cortoutine that flickers the loot and then calls collect coins
+                        StartCoroutine(TickLoot(gameObject, treasureToCollect, lootTileWorldLocation));
+                    }
+                    else if (bomb != null)
+                    {
+                        bomb.GetComponent<Collider2D>().enabled = true;
+                        bomb.detonateTime = detonationTime;
+                    }
+                    else
+                    {
+                        throw new ArgumentException("Treasure or bomb cannot be null", nameof(treasure));
+                    }
+
+                } else
+                {
+                    throw new ArgumentException("Game object cannot be null", nameof(gameObject));
+                }
             }
             else
             {
@@ -158,6 +193,7 @@ public class LootDetectorScript: MonoBehaviour
     // Function to make the loot flicker then collect coins 
     IEnumerator TickLoot(GameObject loot, int coinsCollected, Vector3 worldLocation)
     {
+        Color original = loot.GetComponent<SpriteRenderer>().color;
 
         /// flash a color
         for (int i = 0; i < flashes; i++)
@@ -174,8 +210,11 @@ public class LootDetectorScript: MonoBehaviour
             yield return new WaitForSeconds(timeBetweenFlashes);
         }
 
+        // set it back
+        loot.GetComponent<SpriteRenderer>().color = original;
+
         // destory the prefab
-        Destroy(loot);
+        Destroy(loot, timeBeforeTreasureDisappears);
 
         // tell the coin manager to do its thing.
         coinManager.CollectCoins(worldLocation, coinsCollected);

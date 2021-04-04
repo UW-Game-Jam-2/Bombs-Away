@@ -6,6 +6,10 @@ TagManager:
   tags:
   - Bomb
   - Bomb Selection
+  - Boundary
+  - LeftBoundary
+  - RightBoundary
+  - Foreground
   layers:
   - Default
   - TransparentFX
@@ -51,4 +55,7 @@ TagManager:
     locked: 0
   - name: Debug
     uniqueID: 4145520011
+    locked: 0
+  - name: Islands
+    uniqueID: 103633061
     locked: 0
