@@ -13,18 +13,18 @@ public class Ship : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //GameObject[] gameObjects = FindObjectsOfType<GameObject>();
-        //foreach (GameObject obj in gameObjects)
-        //{
-        //    if (obj.CompareTag("RightBoundary"))
-        //    {
-        //        maxX = obj.transform.position.x;
-        //    }
-        //    else if (obj.CompareTag("LeftBoundary"))
-        //    {
-        //        minX = obj.transform.position.x;
-        //    }
-        //}
+        GameObject[] gameObjects = FindObjectsOfType<GameObject>();
+        foreach (GameObject obj in gameObjects)
+        {
+            if (obj.CompareTag("RightBoundary"))
+            {
+                maxX = obj.transform.position.x;
+            }
+            else if (obj.CompareTag("LeftBoundary"))
+            {
+                minX = obj.transform.position.x;
+            }
+        }
     }
 
     // Update is called once per frame
