@@ -7,6 +7,9 @@ TagManager:
   - Bomb
   - Bomb Selection
   - Boundary
+  - LeftBoundary
+  - RightBoundary
+  - Foreground
   layers:
   - Default
   - TransparentFX
