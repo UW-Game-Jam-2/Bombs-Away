@@ -11,6 +11,4 @@ public class Bomb_Basic : Bomb
         yExplosionDistance = explosionRadius;
         explosionImpactDistance = explosionRadius;
     }
-
-    
 }
