@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ShipMovementScriptLevelSelect : MonoBehaviour
 {
@@ -28,5 +29,11 @@ public class ShipMovementScriptLevelSelect : MonoBehaviour
         rigidBody.AddRelativeForce(Vector2.up * speed);
 
         rigidBody.AddRelativeForce(Vector2.right * rigidBody.velocity.magnitude * steeringAmount / 2);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        print(collision.gameObject.name);
+        SceneManager.LoadScene(collision.gameObject.name);
     }
 }
