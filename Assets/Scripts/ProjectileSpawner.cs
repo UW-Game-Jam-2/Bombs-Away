@@ -31,6 +31,7 @@ public class ProjectileSpawner : MonoBehaviour
         if (Time.time > cooldown) {
             Instantiate(bomb, spawnPosition, Quaternion.identity);
             cooldown = Time.time + attackSpeed;
+            ObjectivesManagerScript.instance.UpdateShotCount();
         }
         
     }
