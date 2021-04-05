@@ -10,6 +10,8 @@ TagManager:
   - LeftBoundary
   - RightBoundary
   - Foreground
+  - LevelSelectLevel
+  - TheSaltyDog
   layers:
   - Default
   - TransparentFX
@@ -61,4 +63,7 @@ TagManager:
     locked: 0
   - name: Islands
     uniqueID: 103633061
+    locked: 0
+  - name: Level-Select-Items
+    uniqueID: 1423513247
     locked: 0

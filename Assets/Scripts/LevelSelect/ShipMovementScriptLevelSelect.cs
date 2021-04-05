@@ -13,6 +13,7 @@ public class ShipMovementScriptLevelSelect : MonoBehaviour
     [SerializeField] SceneFader sceneFader;
 
     public static event Action<string> didCollideWithIsland;
+    public static event Action didTriggerOpenOcean;
 
 
     private float steeringAmount, speed, direction;
@@ -24,20 +25,32 @@ public class ShipMovementScriptLevelSelect : MonoBehaviour
         steeringAmount = Input.GetAxis("Horizontal");
         speed = - Input.GetAxis("Vertical") * movementAcceleration;
         direction = Mathf.Sign(Vector2.Dot(rigidBody.velocity, rigidBody.GetRelativeVector(Vector2.up)));
-    }
+    } 
 
     private void FixedUpdate()
     {
-        //rigidBody.MovePosition(rigidBody.position + movement * movementSpeed * Time.fixedDeltaTime);
-        rigidBody.rotation += steeringAmount * steeringPower * rigidBody.velocity.magnitude * direction * Time.fixedDeltaTime;
+
+        float minimumTurning = rigidBody.velocity.magnitude;
+
+        rigidBody.rotation += steeringAmount * steeringPower * minimumTurning * direction * Time.fixedDeltaTime;
 
         rigidBody.AddRelativeForce(Vector2.up * speed);
 
-        rigidBody.AddRelativeForce(Vector2.right * rigidBody.velocity.magnitude * steeringAmount / 2);
+        rigidBody.AddRelativeForce(Vector2.right * minimumTurning * steeringAmount / 2);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        didCollideWithIsland?.Invoke(collision.gameObject.name);
+        if (collision.gameObject.tag != "Boundary")
+        {
+            print(collision.gameObject.name);
+            didCollideWithIsland?.Invoke(collision.gameObject.name);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        print(collision.gameObject.name);
+        didTriggerOpenOcean?.Invoke();
     }
 }
