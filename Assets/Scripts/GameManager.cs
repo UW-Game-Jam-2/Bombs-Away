@@ -44,6 +44,10 @@ public class GameManager : MonoBehaviour
         //SceneManager.LoadScene(sceneName);
     }
 
+    public void GoToLevelSelectScene() {
+        SceneManager.LoadScene("LevelSelect");
+    }
+
     public int GetGoalCoinsByLevel(int level) {
         int coinCountToReturn = 0;
         switch(level) {

@@ -43,3 +43,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84a3969437c9e1f4eae7496eb0a3b979, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  levelCompleteCanvas: {fileID: 0}
+  coinText: {fileID: 0}
+  chestText: {fileID: 0}
+  bombText: {fileID: 0}
+  overallText: {fileID: 0}
+  coinObjectiveText: {fileID: 0}
+  chestObjectiveText: {fileID: 0}
+  bombObjectiveText: {fileID: 0}
+  goalObjectiveText: {fileID: 0}

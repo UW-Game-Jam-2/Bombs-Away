@@ -92,7 +92,7 @@ GameObject:
   - component: {fileID: 5704171878357783719}
   - component: {fileID: 5704171878357783716}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: CoinCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
