@@ -11,13 +11,15 @@ public class ProjectileSpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
-        {
-            Vector3 spawnPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            spawnPosition.z = 0;
-            SpawnProjectileAtLocation(spawnPosition, RandomizeBomb());
+        // TODO: Remove below code once we are done with all debuging
 
-        }
+        //if (Input.GetMouseButtonDown(0))
+        //{
+        //    Vector3 spawnPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        //    spawnPosition.z = 0;
+        //    SpawnProjectileAtLocation(spawnPosition, RandomizeBomb());
+
+        //}
     }
 
     // Spawns a bomb prefab
