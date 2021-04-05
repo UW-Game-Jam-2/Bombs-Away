@@ -380,6 +380,10 @@ PrefabInstance:
       propertyPath: maxWindStrength
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 2527044209737952670, guid: 69f3715a8eafc429dad54754517500f9, type: 3}
+      propertyPath: windForceStrength
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 3600521809438085616, guid: 69f3715a8eafc429dad54754517500f9, type: 3}
       propertyPath: m_Name
       value: Wind
