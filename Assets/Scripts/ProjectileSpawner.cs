@@ -8,6 +8,9 @@ public class ProjectileSpawner : MonoBehaviour
     public GameObject[] bombPrefabs;
     public ExplosionType explosionType;
 
+    private float attackSpeed = 2f;
+    private float cooldown;
+
     // Update is called once per frame
     void Update()
     {
@@ -25,7 +28,11 @@ public class ProjectileSpawner : MonoBehaviour
     // Spawns a bomb prefab
     public void SpawnProjectileAtLocation(Vector3 spawnPosition, GameObject bomb)
     {
-        Instantiate(bomb, spawnPosition, Quaternion.identity);
+        if (Time.time > cooldown) {
+            Instantiate(bomb, spawnPosition, Quaternion.identity);
+            cooldown = Time.time + attackSpeed;
+        }
+        
     }
 
     private GameObject RandomizeBomb()
