@@ -56,6 +56,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] SceneFader sceneFader;
     public static GameManager sharedInstance;
     const string LEVEL_SELECT = "LevelSelect";
+    const string CURRENT_LEVEL = "currentLevel";
 
     private int[] goldShotTarget = new int[] { 20, 20, 20, 20, 20, 20 };
     private int[] silverShotTarget = new int[] { 40, 40, 40, 40, 40, 40 };
@@ -182,6 +183,11 @@ public class GameManager : MonoBehaviour
      
     public void PlayLevel(string levelName)
     {
+
+        // need for the objective tracking
+        int levelIndex = (int)levelName[levelName.Length - 1];
+        PlayerPrefs.SetInt("CURRENT_LEVEL", levelIndex);
+
         GoToScene(levelName);
     }
 
