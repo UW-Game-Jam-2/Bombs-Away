@@ -32,7 +32,6 @@ public class SaltyDogStore : MonoBehaviour
 
     void PopulateStore()
     {
-        print("populate stores");
 
         List<StoreInfo> purchasableBombs = GameManager.sharedInstance.purchasableBombs;
         List<StoreInfo> lockedBombs = GameManager.sharedInstance.lockedBombs;
@@ -71,7 +70,6 @@ public class SaltyDogStore : MonoBehaviour
         /// turn off all the locks buttons
         foreach (StoreInfo type in purchasableBombs)
         {
-            print(type);
 
             bool playerCanAfford = GameManager.sharedInstance.playerInfo.gold > type.cost;
             switch (type.explosionType)
@@ -127,12 +125,10 @@ public class SaltyDogStore : MonoBehaviour
             }
         }
 
-        print("====");
         /// turn off all the buy buttons
         /// turn on all the locks buttons
         foreach (StoreInfo type in lockedBombs)
         {
-            print(type);
             switch (type.explosionType)
             {
                 case ExplosionType.CLUSTER:

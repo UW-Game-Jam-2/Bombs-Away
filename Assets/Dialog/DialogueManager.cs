@@ -72,7 +72,6 @@ public class DialogueManager : MonoBehaviour
 
         // show the sentence
         string sentence = sentences.Dequeue();
-        print(sentence);
         StopAllCoroutines();
         StartCoroutine(TypeSentence(sentence));
 

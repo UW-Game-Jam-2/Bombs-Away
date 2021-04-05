@@ -43,14 +43,12 @@ public class ShipMovementScriptLevelSelect : MonoBehaviour
     {
         if (collision.gameObject.tag != "Boundary")
         {
-            print(collision.gameObject.name);
             didCollideWithIsland?.Invoke(collision.gameObject.name);
         }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        print(collision.gameObject.name);
         didTriggerOpenOcean?.Invoke();
     }
 }

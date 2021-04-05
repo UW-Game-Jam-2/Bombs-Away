@@ -209,7 +209,6 @@ public class TerrainDestroyer : MonoBehaviour
 
             }
         }
-        //print($"Destorying the tiles");
         terrain.SetTile(tilePosition, null);
     }
 }
