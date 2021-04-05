@@ -160,10 +160,11 @@ public class LootDetectorScript: MonoBehaviour
                     if (treasure != null)
                     {
                         int treasureToCollect = treasure.Amount();
-                        ObjectivesManagerScript.instance.UpdateChestCount();
+                        
 
                         // start a cortoutine that flickers the loot and then calls collect coins
                         StartCoroutine(TickLoot(gameObject, treasureToCollect, lootTileWorldLocation));
+                        ObjectivesManagerScript.instance.UpdateChestCount();
                     }
                     else if (bomb != null)
                     {
