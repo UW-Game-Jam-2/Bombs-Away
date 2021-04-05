@@ -100,6 +100,7 @@ public class CoinManagerScript : MonoBehaviour
     // Update is called once per frame
     public void CollectCoins(Vector3 collectPosition, int amount)
     {
+        ObjectivesManagerScript.instance.UpdateCoinCount(amount);
         Animate(collectPosition, amount);
     }
 }
