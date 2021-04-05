@@ -148,7 +148,8 @@ public class GameManager : MonoBehaviour
 
             foreach (StoreInfo storeInfo in this.lockedBombs)
             {
-                if (kvp.Value.explosionType == storeInfo.explosionType) { 
+                if (kvp.Value.explosionType == storeInfo.explosionType)
+                {
                     if (playerInfo.highestLevelBeat >= kvp.Value.unlockedAfterLevel)
                     {
                         newPurchasableBombs.Add(storeInfo);
@@ -189,7 +190,7 @@ public class GameManager : MonoBehaviour
     {
         GoToScene(LEVEL_SELECT);
     }
-     
+
     public void PlayLevel(string levelName)
     {
 
@@ -213,14 +214,17 @@ public class GameManager : MonoBehaviour
         sceneFader.FadeTo(sceneName);
     }
 
-    public void GoToLevelSelectScene() {
+    public void GoToLevelSelectScene()
+    {
         SceneManager.LoadScene("LevelSelect");
     }
 
-    public int GetGoalCoinsByLevel(int level) {
+    public int GetGoalCoinsByLevel(int level)
+    {
         int coinCountToReturn = 0;
-        switch(level) {
-            case 1: 
+        switch (level)
+        {
+            case 1:
                 coinCountToReturn = 40;
                 break;
             case 2:
@@ -244,9 +248,11 @@ public class GameManager : MonoBehaviour
         return coinCountToReturn;
     }
 
-    public int GetMaxChestsByLevel(int level) {
+    public int GetMaxChestsByLevel(int level)
+    {
         int chestCountToReturn = 0;
-        switch (level) {
+        switch (level)
+        {
             case 1:
                 chestCountToReturn = 3;
                 break;
@@ -271,9 +277,11 @@ public class GameManager : MonoBehaviour
         return chestCountToReturn;
     }
 
-    public int GetGoldShotTargetByLevel(int level) {
+    public int GetGoldShotTargetByLevel(int level)
+    {
         int shotTargetToReturn = 0;
-        switch (level) {
+        switch (level)
+        {
             case 1:
                 shotTargetToReturn = goldShotTarget[0];
                 break;
@@ -298,9 +306,11 @@ public class GameManager : MonoBehaviour
         return shotTargetToReturn;
     }
 
-    public int GetSilverShotTargetByLevel(int level) {
+    public int GetSilverShotTargetByLevel(int level)
+    {
         int shotTargetToReturn = 0;
-        switch (level) {
+        switch (level)
+        {
             case 1:
                 shotTargetToReturn = silverShotTarget[0];
                 break;

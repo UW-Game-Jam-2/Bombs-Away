@@ -38,16 +38,19 @@ public class ObjectivesManagerScript : MonoBehaviour
 
     public static ObjectivesManagerScript instance;
 
-    private void Awake() {
-        if (instance == null) {
+    private void Awake()
+    {
+        if (instance == null)
+        {
             instance = this;
-        } 
+        }
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        if (PlayerPrefs.HasKey("currentLevel")) {
+        if (PlayerPrefs.HasKey("currentLevel"))
+        {
             currentLevel = PlayerPrefs.GetInt("currentLevel");
         }
 
@@ -63,73 +66,97 @@ public class ObjectivesManagerScript : MonoBehaviour
         goalObjectiveText.color = Color.yellow;
     }
 
-    public void UpdateChestCount() {
+    public void UpdateChestCount()
+    {
         currentChestCount++;
         chestObjectiveText.text = currentChestCount + "/" + maxChestCount;
         CheckAllObjectives();
     }
 
-    public void UpdateCoinCount(int newCoinValue) {
+    public void UpdateCoinCount(int newCoinValue)
+    {
         currentCoinCount += newCoinValue;
         coinObjectiveText.text = currentCoinCount + "";
         CheckAllObjectives();
     }
 
-    public void UpdateShotCount() {
+    public void UpdateShotCount()
+    {
         shotCount++;
         bombObjectiveText.text = shotCount + "";
 
-        if (shotCount > goldShotTarget && shotCount <= silverShotTarget) {
+        if (shotCount > goldShotTarget && shotCount <= silverShotTarget)
+        {
             goalObjectiveText.text = "(" + silverShotTarget + ")";
             goalObjectiveText.color = Color.gray;
-        } else if (shotCount > silverShotTarget) {
+        }
+        else if (shotCount > silverShotTarget)
+        {
             goalObjectiveText.text = "(" + silverShotTarget + "+)";
             goalObjectiveText.color = Color.magenta;
         }
     }
 
-    IEnumerator GameEndDelay(float timeToWait) {
+    IEnumerator GameEndDelay(float timeToWait)
+    {
         yield return new WaitForSeconds(timeToWait);
         SetLevelCompleteValues();
     }
 
-    void SetLevelCompleteValues() {
+    void SetLevelCompleteValues()
+    {
         levelCompleteCanvas.gameObject.SetActive(true);
         coinText.text = currentCoinCount + "";
         chestText.text = currentChestCount + "/" + maxChestCount;
         bombText.text = "x" + shotCount;
 
         levelGrade = "Overall: ";
-        if (shotCount <= goldShotTarget) {
+        if (shotCount <= goldShotTarget)
+        {
             levelGrade += "GOLD";
-        } else if (shotCount <= silverShotTarget) {
+        }
+        else if (shotCount <= silverShotTarget)
+        {
             levelGrade += "SILVER";
-        } else {
+        }
+        else
+        {
             levelGrade += "BRONZE";
         }
 
         overallText.text = levelGrade;
 
-        if (PlayerPrefs.HasKey("totalCoinCount")) {
+        if (PlayerPrefs.HasKey("totalCoinCount"))
+        {
             PlayerPrefs.SetInt("totalCoinCount", PlayerPrefs.GetInt("totalCoinCount") + currentCoinCount);
-        } else {
+        }
+        else
+        {
             PlayerPrefs.SetInt("totalCoinCount", currentCoinCount);
         }
 
-        if (PlayerPrefs.HasKey("Level" + currentLevel + "_Grade")) {
+        if (PlayerPrefs.HasKey("Level" + currentLevel + "_Grade"))
+        {
             string savedLevelGrade = PlayerPrefs.GetString("Level" + currentLevel + "_Grade");
-            if (savedLevelGrade.Equals("BRONZE") && (levelGrade.Equals("SILVER") || levelGrade.Equals("GOLD"))) {
-                PlayerPrefs.SetString("Level" + currentLevel + "_Grade", levelGrade);
-            } else if (savedLevelGrade.Equals("SILVER") && levelGrade.Equals("GOLD")) {
+            if (savedLevelGrade.Equals("BRONZE") && (levelGrade.Equals("SILVER") || levelGrade.Equals("GOLD")))
+            {
                 PlayerPrefs.SetString("Level" + currentLevel + "_Grade", levelGrade);
             }
-        } else {
+            else if (savedLevelGrade.Equals("SILVER") && levelGrade.Equals("GOLD"))
+            {
+                PlayerPrefs.SetString("Level" + currentLevel + "_Grade", levelGrade);
+            }
+        }
+        else
+        {
             PlayerPrefs.SetString("Level" + currentLevel + "_Grade", levelGrade);
         }
     }
 
-    void CheckAllObjectives() {
-        if (currentChestCount.Equals(maxChestCount) && currentCoinCount >= goalCoinCount) {
+    void CheckAllObjectives()
+    {
+        if (currentChestCount.Equals(maxChestCount) && currentCoinCount >= goalCoinCount)
+        {
             StartCoroutine(GameEndDelay(3f));
         }
     }
