@@ -67,6 +67,15 @@ public class GameManager : MonoBehaviour
     public PlayerInfo playerInfo;
 
 
+    // TODO: Create a Island "Drawer" script.  It will check the highest completed level for the player and render all the islands and colliders for the "revealed" islands.
+    // TODO: work with Jarrod to bring the narrative in in small chunks
+    // TODO: create a DialogueLoader that loads the correct narrative based on the most recently finished level and if they have seen it before
+    // TODO: Tweak costs for bombs/when they unlock
+    // TODO: Show the player's gold in the Salty Dog
+    // TODO: bring in Quinns art
+    // TODO: Upload a build and get everyone to test for bugs
+
+
     /// <summary>
     ///  Player starts with the Basic bomb.  The other bombs are locked.  They become purchasble. Once purchased they become available
     /// </summary>
