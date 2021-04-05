@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class IslandHighlighterScript : MonoBehaviour
 {
     [SerializeField] Text theSatlyDogTitleText;
-    [SerializeField] GameObject theSaltyDogStore;
+    [SerializeField] GameObject theSaltyDogStoreInCanvas;
     [SerializeField] Text gameTitleText;
     [SerializeField] Text levelTitleText;
     [SerializeField] Text levelNameText;
@@ -57,7 +57,7 @@ public class IslandHighlighterScript : MonoBehaviour
     void ToggleSaltyDogUI(bool onOff)
     {
         theSatlyDogTitleText.enabled = onOff;
-        theSaltyDogStore.SetActive(onOff);
+        theSaltyDogStoreInCanvas.SetActive(onOff);
     }
 
     void DidMoveToOpenOcean()

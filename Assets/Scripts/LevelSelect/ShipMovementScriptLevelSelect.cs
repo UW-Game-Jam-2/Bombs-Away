@@ -29,12 +29,14 @@ public class ShipMovementScriptLevelSelect : MonoBehaviour
 
     private void FixedUpdate()
     {
-        //rigidBody.MovePosition(rigidBody.position + movement * movementSpeed * Time.fixedDeltaTime);
-        rigidBody.rotation += steeringAmount * steeringPower * rigidBody.velocity.magnitude * direction * Time.fixedDeltaTime;
+
+        float minimumTurning = rigidBody.velocity.magnitude;
+
+        rigidBody.rotation += steeringAmount * steeringPower * minimumTurning * direction * Time.fixedDeltaTime;
 
         rigidBody.AddRelativeForce(Vector2.up * speed);
 
-        rigidBody.AddRelativeForce(Vector2.right * rigidBody.velocity.magnitude * steeringAmount / 2);
+        rigidBody.AddRelativeForce(Vector2.right * minimumTurning * steeringAmount / 2);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

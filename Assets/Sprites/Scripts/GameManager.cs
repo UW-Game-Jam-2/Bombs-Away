@@ -57,6 +57,7 @@ public class GameManager : MonoBehaviour
     public static GameManager sharedInstance;
     const string LEVEL_SELECT = "LevelSelect";
     const string CURRENT_LEVEL = "currentLevel";
+    const string AVAILABLE_BOMBS_KEY = "AVAILABLE_BOMBS_KEY";
 
     private int[] goldShotTarget = new int[] { 20, 20, 20, 20, 20, 20 };
     private int[] silverShotTarget = new int[] { 40, 40, 40, 40, 40, 40 };
@@ -67,13 +68,15 @@ public class GameManager : MonoBehaviour
     public PlayerInfo playerInfo;
 
 
-    // TODO: Create a Island "Drawer" script.  It will check the highest completed level for the player and render all the islands and colliders for the "revealed" islands.
-    // TODO: work with Jarrod to bring the narrative in in small chunks
-    // TODO: create a DialogueLoader that loads the correct narrative based on the most recently finished level and if they have seen it before
+    // DONE: Create a Island "Drawer" script.  It will check the highest completed level for the player and render all the islands and colliders for the "revealed" islands.
+    // In PROGRESS: work with Jarrod to bring the narrative in in small chunks
+    // DONE: create a DialogueLoader that loads the correct narrative based on the most recently finished level and if they have seen it before
     // TODO: Tweak costs for bombs/when they unlock
     // TODO: Show the player's gold in the Salty Dog
     // TODO: bring in Quinns art
     // TODO: Upload a build and get everyone to test for bugs
+    // TODO: Show the player's objectives in the level select
+    // TODO: Make sur the first and second level are pretty easy with bad bombs
 
 
     /// <summary>
@@ -97,7 +100,6 @@ public class GameManager : MonoBehaviour
             DestroyImmediate(gameObject);
         }
 
-        print("awake game manager");
         StoreInfo cluster = new StoreInfo(clusterCost, clusterUnlock, ExplosionType.CLUSTER, "Explodes into three smaller bombs ");
         StoreInfo moab = new StoreInfo(moabCost, moabUnlock, ExplosionType.MOAB, "The largest and loudest bomb");
         StoreInfo horizontal = new StoreInfo(horizontalCost, horizontalUnlock, ExplosionType.HORIZONTAL, "Blasts away a horizontal swath of land");
@@ -137,7 +139,6 @@ public class GameManager : MonoBehaviour
     /// Called by the Salty Dog store when the LevelSelect scene reappears.  It updates the invetory data so we know what is purchaseable and what isnt
     public void ReloadInventory()
     {
-        print("reload inventory");
 
         List<StoreInfo> newLockedBombs = new List<StoreInfo>();
         List<StoreInfo> newPurchasableBombs = new List<StoreInfo>();
@@ -145,7 +146,6 @@ public class GameManager : MonoBehaviour
         foreach (KeyValuePair<ExplosionType, StoreInfo> kvp in bombStoreInfo)
         {
 
-            print(kvp);
             foreach (StoreInfo storeInfo in this.lockedBombs)
             {
                 if (kvp.Value.explosionType == storeInfo.explosionType) { 
@@ -196,6 +196,14 @@ public class GameManager : MonoBehaviour
         // need for the objective tracking
         int levelIndex = (int)levelName[levelName.Length - 1];
         PlayerPrefs.SetInt("CURRENT_LEVEL", levelIndex);
+
+        // need for the level config
+        string availableBombString = "";
+        foreach (ExplosionType type in availableBombs)
+        {
+            availableBombString += $"{type.ToString()},";
+        }
+        PlayerPrefs.SetString(AVAILABLE_BOMBS_KEY, availableBombString.Remove(availableBombString.Length - 1, 1));
 
         GoToScene(levelName);
     }

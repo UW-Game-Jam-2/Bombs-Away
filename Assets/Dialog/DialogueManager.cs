@@ -72,6 +72,7 @@ public class DialogueManager : MonoBehaviour
 
         // show the sentence
         string sentence = sentences.Dequeue();
+        print(sentence);
         StopAllCoroutines();
         StartCoroutine(TypeSentence(sentence));
 
@@ -89,7 +90,7 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-    void EndDialogue()
+    public void EndDialogue()
     {
         /// end the animations
         animator.SetBool("IsOpen", false);
