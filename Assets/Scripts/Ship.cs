@@ -11,6 +11,9 @@ public class Ship : MonoBehaviour
     private float maxX = float.PositiveInfinity;
     private float minX = float.NegativeInfinity;
 
+    private float attackSpeed = 2f;
+    private float cooldown;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -54,7 +57,7 @@ public class Ship : MonoBehaviour
         }
 
         // Throw a bomb if the user pressed space
-        if (Input.GetButtonDown("FireBomb"))
+        if (Input.GetButtonDown("FireBomb") && Time.time > cooldown)
         {
             Renderer renderer = GetComponent<Renderer>();
             // The new spawn position is y minus the space that the ship occupies
@@ -62,6 +65,8 @@ public class Ship : MonoBehaviour
             Vector3 spawnPosition = new Vector3(transform.position.x, transform.position.y - renderer.bounds.extents.y);
 
             projectileSpawner.SpawnProjectileAtLocation(spawnPosition, GetNextBomb());
+            cooldown = Time.time + attackSpeed;
+            ObjectivesManagerScript.instance.UpdateShotCount();
 
         }
     }
