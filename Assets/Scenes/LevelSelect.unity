@@ -1030,7 +1030,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 685254944}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 73209958bf35546bcbc34cb2b4eb6c13, type: 3}
+  m_Script: {fileID: 11500000, guid: aa86c856d057d40ef82b7a270b74e4c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   rigidBody: {fileID: 685254947}
@@ -1879,7 +1879,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 840576982}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2ec0b245142794bbb88831069e1f79df, type: 3}
+  m_Script: {fileID: 11500000, guid: 3832f87b8ccbf405fb8e511078c89fa0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   theSatlyDogTitleText: {fileID: 1827095016}

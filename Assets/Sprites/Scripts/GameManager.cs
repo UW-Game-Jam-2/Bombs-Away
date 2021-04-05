@@ -76,7 +76,8 @@ public class GameManager : MonoBehaviour
     // TODO: bring in Quinns art
     // TODO: Upload a build and get everyone to test for bugs
     // TODO: Show the player's objectives in the level select
-    // TODO: Make sur the first and second level are pretty easy with bad bombs
+    // TODO: Make sure the first and second level are pretty easy with bad bombs
+    // TODO: Make sure
 
 
     /// <summary>
@@ -111,7 +112,6 @@ public class GameManager : MonoBehaviour
         lockedBombs.Add(horizontal);
         lockedBombs.Add(vertical);
         lockedBombs.Add(sticky);
-
 
         bombStoreInfo[ExplosionType.CLUSTER] = cluster;
         bombStoreInfo[ExplosionType.MOAB] = moab;
