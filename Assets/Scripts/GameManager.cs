@@ -41,7 +41,6 @@ public class GameManager : MonoBehaviour
     private void GoToScene(string sceneName)
     {
         sceneFader.FadeTo(sceneName);
-        //SceneManager.LoadScene(sceneName);
     }
 
     public void GoToLevelSelectScene() {
