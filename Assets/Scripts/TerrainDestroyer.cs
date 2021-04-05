@@ -10,6 +10,9 @@ public class TerrainDestroyer : MonoBehaviour
     [SerializeField] Tilemap terrain;
     [SerializeField] Tilemap backgroundTerrain;
     [SerializeField] float tileScale = 0.125f;
+    [SerializeField] GameObject explosionFx;
+    [SerializeField] float explosionRadius;
+    [SerializeField] float explosionDuration;
 
     [Space]
     [Header ("Debug Stuff (let's keep it in for now")]
@@ -182,6 +185,14 @@ public class TerrainDestroyer : MonoBehaviour
     // also reduces the durability of Durable tiles by 1
     void DestroyTile(Vector3Int tilePosition)
     {
+
+        // spwan an explosion
+        Vector3 explosionWorldPosition = terrain.CellToWorld(tilePosition);
+        GameObject explosion = Instantiate(explosionFx, explosionWorldPosition, Quaternion.identity);
+        explosion.transform.localScale *= (transform.localScale.x + (explosionRadius + 1));
+        Destroy(explosion, explosionDuration);
+
+        // destroy the tile
         GameObject gameObject = terrain.GetInstantiatedObject(tilePosition);
         if (gameObject != null)
         { 

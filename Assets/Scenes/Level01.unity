@@ -456,6 +456,10 @@ PrefabInstance:
       propertyPath: m_SortingLayerID
       value: 1671004399
       objectReference: {fileID: 0}
+    - target: {fileID: 3642324441196803318, guid: b9c72abece546a5469e8d4adf0e4ccbb, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3642324441196803319, guid: b9c72abece546a5469e8d4adf0e4ccbb, type: 3}
       propertyPath: m_Name
       value: BackgroundPlaceholder
@@ -52585,6 +52589,18 @@ PrefabInstance:
     - target: {fileID: 5066279258481234393, guid: 72d1eb3b9ffbb4ad7b7967e5c1f49dc0, type: 3}
       propertyPath: m_Tiles.Array.data[3370].second.m_TileObjectToInstantiateIndex
       value: 65535
+      objectReference: {fileID: 0}
+    - target: {fileID: 5066279258481234395, guid: 72d1eb3b9ffbb4ad7b7967e5c1f49dc0, type: 3}
+      propertyPath: explosionFx
+      value: 
+      objectReference: {fileID: 1899165368049188656, guid: abdbe69be99fe43b3b18a6f64687c89f, type: 3}
+    - target: {fileID: 5066279258481234395, guid: 72d1eb3b9ffbb4ad7b7967e5c1f49dc0, type: 3}
+      propertyPath: explosionRadius
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 5066279258481234395, guid: 72d1eb3b9ffbb4ad7b7967e5c1f49dc0, type: 3}
+      propertyPath: explosionDuration
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 5066279259141339468, guid: 72d1eb3b9ffbb4ad7b7967e5c1f49dc0, type: 3}
       propertyPath: m_Name
