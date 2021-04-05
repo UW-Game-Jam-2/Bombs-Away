@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Bomb_Sticky : Bomb
 {
+    private bool hasRB = true;
+
     public Bomb_Sticky() {
         explosionType = ExplosionType.STICKY;
         explosionRadius = 0.5f;
@@ -12,10 +14,12 @@ public class Bomb_Sticky : Bomb
         explosionImpactDistance = explosionRadius;
     }
 
+
     private void OnCollisionEnter2D(Collision2D collision) {
-        if (collision.gameObject.CompareTag("Foreground")) {
+        if (hasRB && collision.gameObject.CompareTag("Foreground")) {
             Rigidbody2D rb = GetComponent<Rigidbody2D>();
             Destroy(rb);
+            hasRB = false;
         }
     }
 }

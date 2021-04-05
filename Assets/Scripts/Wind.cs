@@ -4,14 +4,17 @@ using UnityEngine;
 
 public class Wind : MonoBehaviour
 {
+
+    [SerializeField] float windForceStrength;
+    [SerializeField] int maxWindStrength;
+
     private WindIndicator windIndicator;
     private WindDirection[] windDirections = { WindDirection.LEFT,
         WindDirection.RIGHT };
 
     private WindDirection currentWindDirection;
-    private int currentWindStrength;
+    private float currentWindStrength;
 
-    public int maxWindStrength;
 
     // Start is called before the first frame update
     void Start()
@@ -37,12 +40,12 @@ public class Wind : MonoBehaviour
     private void UpdateIndicator()
     {
         RefreshWindValues();
-        windIndicator.UpdateWindIndicator(currentWindDirection, currentWindStrength);
+        windIndicator.UpdateWindIndicator(currentWindDirection, (int)currentWindStrength);
     }
 
     private void RefreshWindValues()
     {
-        currentWindStrength = Random.Range(0, maxWindStrength + 1);
+        currentWindStrength = Random.Range(0f, (maxWindStrength + 1));
         currentWindDirection = windDirections[Random.Range(0, 2)];
     }
 
@@ -56,7 +59,11 @@ public class Wind : MonoBehaviour
         {
             forceDirection = new Vector3(1, 0);
         }
-        bomb.GetComponent<Rigidbody2D>().AddForce(forceDirection * (float)currentWindStrength);
+
+        if (bomb.GetComponent<Rigidbody2D>() != null)
+        {
+            bomb.GetComponent<Rigidbody2D>().AddForce(forceDirection * windForceStrength * currentWindStrength);
+        }
     }
 
     private GameObject[] getBombs()
