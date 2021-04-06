@@ -5,8 +5,12 @@ using UnityEngine;
 public class ProjectileSpawner : MonoBehaviour
 {
 
-    public GameObject[] bombPrefabs;
+    private GameObject[] bombPrefabs;
     public ExplosionType explosionType;
+
+    private void Start() {
+        bombPrefabs = BombManagerScript.instance.GetAvailableBombList();
+    }
 
     // Update is called once per frame
     void Update()

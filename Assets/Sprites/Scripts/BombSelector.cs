@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class BombSelector : MonoBehaviour
 {
-    public GameObject[] bombPrefabs;
+    private GameObject[] bombPrefabs;
     private List<GameObject> currentBombs = new List<GameObject>();
     private BombIndicator bombIndicator;
     public Image[] nextBombImages;
@@ -13,6 +13,7 @@ public class BombSelector : MonoBehaviour
 
     void Start()
     {
+        bombPrefabs = BombManagerScript.instance.GetAvailableBombList();
         bombIndicator = GetComponentInChildren<BombIndicator>();
         for (int index = 0; index < maxBombs; index++)
         {
