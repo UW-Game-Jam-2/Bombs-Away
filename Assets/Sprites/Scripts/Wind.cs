@@ -29,12 +29,7 @@ public class Wind : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //foreach (GameObject bomb in getBombs())
-        //{
-        //    ApplyForceToBomb(bomb);
-        //}
-
-        GameObject[] bombsActive = GameObject.FindGameObjectsWithTag("Bomb");
+        GameObject[] bombsActive = getBombs();
 
         for (int i=0; i < bombsActive.Length; i++) {
             if (collider.bounds.Contains(bombsActive[i].transform.position)) {
@@ -81,12 +76,5 @@ public class Wind : MonoBehaviour
     private GameObject[] getBombs()
     {
         return GameObject.FindGameObjectsWithTag("Bomb");
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision) {
-        if (collision.gameObject.tag == "Bomb") {
-            //Debug.Log("trigger - bomb collider detected");
-            //ApplyForceToBomb(collision.gameObject);
-        }
     }
 }
