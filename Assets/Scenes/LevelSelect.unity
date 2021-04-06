@@ -588,8 +588,19 @@ MonoBehaviour:
     name: Gibbs
     dialogueImage:
     - {fileID: 21300000, guid: b79b73dc599794876ba0dfbf821b0e75, type: 3}
+    - {fileID: 21300000, guid: b79b73dc599794876ba0dfbf821b0e75, type: 3}
+    - {fileID: 21300000, guid: b79b73dc599794876ba0dfbf821b0e75, type: 3}
+    - {fileID: 21300000, guid: b79b73dc599794876ba0dfbf821b0e75, type: 3}
+    - {fileID: 21300000, guid: 7de55670f48a640c88d2acbbfd24afdd, type: 3}
     sentences:
-    - You beat level 1
+    - 'Back at The Salty Dog, you plop a sack gold doubloons in front of Gibbs... '
+    - "\"Shiver me timbers you made it back! I guess you are a better pirate than
+      they say\u2026\""
+    - "A boisterous group of pirates are can be heard chanting \u201CYo-ho yo-ho
+      a pirate\u2019s life for me\u201D in the pub"
+    - You might need a little more firepower this time around though. Meet Desperaux
+      down on the docks for some goodies.
+    - (Desperaux lives on the island with the big blue dog)
 --- !u!1 &411727232
 GameObject:
   m_ObjectHideFlags: 0
@@ -828,8 +839,27 @@ MonoBehaviour:
     name: Gibbs
     dialogueImage:
     - {fileID: 21300000, guid: b79b73dc599794876ba0dfbf821b0e75, type: 3}
+    - {fileID: 21300000, guid: b79b73dc599794876ba0dfbf821b0e75, type: 3}
+    - {fileID: 21300000, guid: b79b73dc599794876ba0dfbf821b0e75, type: 3}
+    - {fileID: 21300000, guid: b79b73dc599794876ba0dfbf821b0e75, type: 3}
+    - {fileID: 21300000, guid: b79b73dc599794876ba0dfbf821b0e75, type: 3}
+    - {fileID: 21300000, guid: b79b73dc599794876ba0dfbf821b0e75, type: 3}
     sentences:
-    - haha, oh boy
+    - 'Gibbs can barely contain his excited as he sees your leather tricorne appear
+      in the entrance of The Salty Dog
+
+'
+    - "\"The fearless Calico Jack Rackham delivers yet again! I hear there\u2019s
+      a waiting list to join your crew now!\""
+    - "\"The fearless Calico Jack Rackham delivers yet again! I hear there\u2019s
+      a waiting list to join your crew now!\""
+    - Up for another challenge? This one is unique and not your usual treasure.
+    - "I wont\u2019 spoil the surprise...but let\u2019s just say any good pirate\u2019s
+      thirst will be quenched. \n"
+    - 'Make sure to visit Desperaux for any new bombs before you depart. A rich man
+      like you can surely afford some fun!
+
+'
 --- !u!1 &566058662
 GameObject:
   m_ObjectHideFlags: 0
@@ -931,8 +961,25 @@ MonoBehaviour:
     name: Gibbs
     dialogueImage:
     - {fileID: 21300000, guid: b79b73dc599794876ba0dfbf821b0e75, type: 3}
+    - {fileID: 21300000, guid: b79b73dc599794876ba0dfbf821b0e75, type: 3}
+    - {fileID: 21300000, guid: b79b73dc599794876ba0dfbf821b0e75, type: 3}
+    - {fileID: 21300000, guid: b79b73dc599794876ba0dfbf821b0e75, type: 3}
+    - {fileID: 21300000, guid: b79b73dc599794876ba0dfbf821b0e75, type: 3}
+    - {fileID: 21300000, guid: b79b73dc599794876ba0dfbf821b0e75, type: 3}
     sentences:
-    - Test you beat level 2
+    - 'You enter The Salty Dog and see Gibbs anxiously waiting for your arrival
+
+'
+    - ' A toast to your success! Drink up me hearty!'
+    - 'Gibbs spits the cork off a bottle of rum and shoves it into you hand
+
+'
+    - Your reputation is growing Jack! Up for a lil revenge on the King?
+    - 'This here map details the location of English shillings buried after a shipwreck.
+
+'
+    - Oh and do pay a visit to Desperaux he has whipped up a new cannonball that
+      will surely aid your plundering.
 --- !u!114 &578022876 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1828045245010138821, guid: 1f6a942b9e8264642baa9b653df21818, type: 3}
@@ -4108,8 +4155,16 @@ MonoBehaviour:
     name: Gibbs
     dialogueImage:
     - {fileID: 21300000, guid: b79b73dc599794876ba0dfbf821b0e75, type: 3}
+    - {fileID: 21300000, guid: b79b73dc599794876ba0dfbf821b0e75, type: 3}
+    - {fileID: 21300000, guid: b79b73dc599794876ba0dfbf821b0e75, type: 3}
+    - {fileID: 2110797065405886801, guid: 9f2273294b0b1459189b960e35ffa0be, type: 3}
     sentences:
-    - Test you beat level 5
+    - "Captain Jack walks into The Salty Dog to a reception befit for a king. \n"
+    - "Ladies and Gentleman of New Providence. May I present Captain \u201CCalico\u201D
+      Jack Rackham! \n"
+    - "A truly impressive success! There\u2019s more riches to be had, but tonight
+      we drink! \n"
+    - To be continued...
 --- !u!114 &1114386930 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5658433694293671773, guid: 1f6a942b9e8264642baa9b653df21818, type: 3}
@@ -14467,8 +14522,20 @@ MonoBehaviour:
     name: Gibbs
     dialogueImage:
     - {fileID: 21300000, guid: b79b73dc599794876ba0dfbf821b0e75, type: 3}
+    - {fileID: 21300000, guid: b79b73dc599794876ba0dfbf821b0e75, type: 3}
+    - {fileID: 21300000, guid: b79b73dc599794876ba0dfbf821b0e75, type: 3}
+    - {fileID: 21300000, guid: b79b73dc599794876ba0dfbf821b0e75, type: 3}
+    - {fileID: 21300000, guid: b79b73dc599794876ba0dfbf821b0e75, type: 3}
     sentences:
-    - Test you beat level 4
+    - "\u201CWhy\u2019s the run always gone!?\u201D Jack hears Gibbs moan as he approaches
+      The Salty Dog. "
+    - '"Just in time Jack! I though I would have to face the world without any rum!"'
+    - Gibbs downs nearly half the bottle Jack brought along before realizing Jack
+      is waiting impatiently for the next map.
+    - "\"Right...back to business. This here a serious prize Jack. A fortune of myth...Blackbeard\u2019s
+      chest..."
+    - Rumored to be filled with the rarest gems and riches from across the globe.
+      Are you up for the challenge?"
 --- !u!114 &2081778394 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 879500525340149112, guid: 1f6a942b9e8264642baa9b653df21818, type: 3}
