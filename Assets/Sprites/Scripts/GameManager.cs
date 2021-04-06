@@ -128,6 +128,23 @@ public class GameManager : MonoBehaviour
 
     }
 
+    private void Update()
+    {
+        /// ONLY FOR DEBUG PURPOSES
+        ///
+        if (Input.GetKeyDown(KeyCode.Y))
+        {
+            playerInfo.highestLevelBeat += 1;
+            GoToLevelSelect();
+        }
+
+
+        if(sceneFader == null)
+        {
+            sceneFader = FindObjectOfType<SceneFader>();
+        }
+    }
+
     /// <summary>
     ///  PUBLIC METHODS
     /// </summary>
@@ -141,29 +158,36 @@ public class GameManager : MonoBehaviour
     {
 
         List<StoreInfo> newLockedBombs = new List<StoreInfo>();
-        List<StoreInfo> newPurchasableBombs = new List<StoreInfo>();
+        HashSet<StoreInfo> newPurchasableBombs = new HashSet<StoreInfo>();
+        newPurchasableBombs.UnionWith(purchasableBombs);
 
         foreach (KeyValuePair<ExplosionType, StoreInfo> kvp in bombStoreInfo)
         {
 
-            foreach (StoreInfo storeInfo in this.lockedBombs)
-            {
-                if (kvp.Value.explosionType == storeInfo.explosionType)
+            if (!this.availableBombs.Contains(kvp.Value.explosionType)) { 
+
+                foreach (StoreInfo storeInfo in this.lockedBombs)
                 {
-                    if (playerInfo.highestLevelBeat >= kvp.Value.unlockedAfterLevel)
+                    if (kvp.Value.explosionType == storeInfo.explosionType)
                     {
-                        newPurchasableBombs.Add(storeInfo);
-                    }
-                    else
-                    {
-                        newLockedBombs.Add(storeInfo);
+                        // You have unlocked the buy bought you havent bought yet
+                        if (playerInfo.highestLevelBeat >= kvp.Value.unlockedAfterLevel)
+                        {
+                            newPurchasableBombs.Add(storeInfo);
+                        }
+                        else
+                        {
+                            newLockedBombs.Add(storeInfo);
+                        }
                     }
                 }
             }
         }
 
         this.lockedBombs = newLockedBombs;
-        this.purchasableBombs = newPurchasableBombs;
+        this.purchasableBombs = new List<StoreInfo>(newPurchasableBombs);
+
+        print("INVENTORY RELOADED");
     }
 
     /// <summary>
@@ -174,16 +198,25 @@ public class GameManager : MonoBehaviour
     public void BuyBomb(ExplosionType type)
     {
         // take away player money
+        print(playerInfo.gold);
         playerInfo.gold -= bombStoreInfo[type].cost;
+        print(playerInfo.gold);
 
         /// Remove the bomb from purchasable bombs
-        purchasableBombs.Remove(bombStoreInfo[type]);
+        List < StoreInfo > newPurchasableBombs = new List<StoreInfo>();
+        foreach (StoreInfo bomb in purchasableBombs)
+        {
+
+            if (bomb.explosionType != type)
+            {
+                newPurchasableBombs.Add(bomb);
+            }
+        }
+        this.purchasableBombs = newPurchasableBombs;
 
         /// Add it to the available bombs
         availableBombs.Add(type);
 
-        // reload
-        ReloadInventory();
     }
 
     public void GoToLevelSelect()
@@ -205,6 +238,7 @@ public class GameManager : MonoBehaviour
             availableBombString += $"{type.ToString()},";
         }
         PlayerPrefs.SetString(AVAILABLE_BOMBS_KEY, availableBombString.Remove(availableBombString.Length - 1, 1));
+        print(availableBombString.Remove(availableBombString.Length - 1, 1));
 
         GoToScene(levelName);
     }

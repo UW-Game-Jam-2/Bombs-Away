@@ -23,7 +23,12 @@ public class IslandHighlighterScript : MonoBehaviour
         ShipMovementScriptLevelSelect.didTriggerOpenOcean += DidMoveToOpenOcean;
 
         TurnOnCredits();
+    }
 
+    private void OnDisable()
+    {
+        ShipMovementScriptLevelSelect.didCollideWithIsland -= DidCollide;
+        ShipMovementScriptLevelSelect.didTriggerOpenOcean -= DidMoveToOpenOcean;
     }
 
     // Credits on

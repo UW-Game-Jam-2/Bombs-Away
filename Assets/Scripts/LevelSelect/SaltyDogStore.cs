@@ -19,11 +19,15 @@ public class SaltyDogStore : MonoBehaviour
     public List<Text> costTexts;
     public List<Text> descriptionTexts;
 
+    public Text coinAmountText; 
+
 
     private void Start()
     {
         //get the inventory
         GameManager.sharedInstance.ReloadInventory();
+
+        coinAmountText.text = $"x{GameManager.sharedInstance.playerInfo.gold}";
 
         // populate store things
         PopulateStore();
@@ -37,6 +41,26 @@ public class SaltyDogStore : MonoBehaviour
         List<StoreInfo> lockedBombs = GameManager.sharedInstance.lockedBombs;
         List<ExplosionType> availableBombs = GameManager.sharedInstance.availableBombs;
 
+        print($" ===== POPULATE STORES =====");
+
+        foreach (StoreInfo storeInfo in purchasableBombs)
+        {
+            print($"{storeInfo.explosionType} is purchaseable");
+        }
+
+        foreach (StoreInfo storeInfo in lockedBombs)
+        {
+            print($"{storeInfo.explosionType} is locked");
+        }
+
+        foreach (ExplosionType storeInfo in availableBombs)
+        {
+            print($"{storeInfo} is available");
+        }
+
+
+
+
 
         foreach (ExplosionType type in availableBombs)
         {
@@ -44,22 +68,32 @@ public class SaltyDogStore : MonoBehaviour
                 case ExplosionType.CLUSTER:
                     buyButtons[0].gameObject.SetActive(false);
                     checkmarkImages[0].enabled = true;
+                    lockedImages[0].enabled = false;
+                    costTexts[0].text = "";
                     break;
                 case ExplosionType.VERTICAL:
                     buyButtons[1].gameObject.SetActive(false);
                     checkmarkImages[1].enabled = true;
+                    lockedImages[1].enabled = false;
+                    costTexts[1].text = "";
                     break;
                 case ExplosionType.STICKY:
                     buyButtons[2].gameObject.SetActive(false);
                     checkmarkImages[2].enabled = true;
+                    lockedImages[2].enabled = false;
+                    costTexts[2].text = "";
                     break;
                 case ExplosionType.MOAB:
                     buyButtons[3].gameObject.SetActive(false);
                     checkmarkImages[3].enabled = true;
+                    lockedImages[3].enabled = false;
+                    costTexts[3].text = "";
                     break;
                 case ExplosionType.HORIZONTAL:
                     buyButtons[4].gameObject.SetActive(false);
                     checkmarkImages[4].enabled = true;
+                    lockedImages[4].enabled = false;
+                    costTexts[4].text = "";
                     break;
 
             }
@@ -70,14 +104,26 @@ public class SaltyDogStore : MonoBehaviour
         /// turn off all the locks buttons
         foreach (StoreInfo type in purchasableBombs)
         {
+            print(type.explosionType);
+            print(type.cost);
+            print($" GAME MANAGER GOLD IN THE LOOP = {GameManager.sharedInstance.playerInfo.gold}");
 
-            bool playerCanAfford = GameManager.sharedInstance.playerInfo.gold > type.cost;
+            bool playerCanAfford;
+
+            if (GameManager.sharedInstance.playerInfo.gold >= type.cost)
+            {
+                playerCanAfford = true;
+            } else
+            {
+                playerCanAfford = false;
+            }
+
             switch (type.explosionType)
             {
                 case ExplosionType.CLUSTER:
                     buyButtons[0].gameObject.SetActive(true);
                     buyButtons[0].interactable = playerCanAfford;
-                    costTexts[0].color = playerCanAfford ? Color.black : Color.magenta;
+                    costTexts[0].color = playerCanAfford ? Color.black : Color.red;
                     costTexts[0].text = $"x{type.cost}";
                     lockedImages[0].enabled = false;
                     checkmarkImages[0].enabled = false;
@@ -113,7 +159,7 @@ public class SaltyDogStore : MonoBehaviour
                 case ExplosionType.HORIZONTAL:
                     buyButtons[4].gameObject.SetActive(true);
                     buyButtons[4].interactable = playerCanAfford;
-                    costTexts[4].color = playerCanAfford ? Color.black : Color.magenta;
+                    costTexts[4].color = playerCanAfford ? Color.black : Color.red;
                     costTexts[4].text = $"x{type.cost}";
                     lockedImages[4].enabled = false;
                     checkmarkImages[4].enabled = false;
@@ -201,6 +247,8 @@ public class SaltyDogStore : MonoBehaviour
                 break;
         }
 
+
         PopulateStore();
+        coinAmountText.text = $"x{GameManager.sharedInstance.playerInfo.gold}";
     }
 }
