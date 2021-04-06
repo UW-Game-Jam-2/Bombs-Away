@@ -173,4 +173,4 @@ MonoBehaviour:
   explosionYMultiplier: 2
   explodeBombEvent: {fileID: 11400000, guid: 0077c40063ea24b70b740c3d6dd7d240, type: 2}
   explosionFx: {fileID: 1899165368049188656, guid: abdbe69be99fe43b3b18a6f64687c89f, type: 3}
-  bombRepresentation: {fileID: 21300000, guid: 3044da957e2f54a69bd47d734fbbc5a5, type: 3}
+  bombRepresentation: {fileID: 21300000, guid: 7bfbd5d5428ed4d9196d1137f9799451, type: 3}

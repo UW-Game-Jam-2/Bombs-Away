@@ -12,8 +12,8 @@ public class ObjectivesManagerScript : MonoBehaviour
     private int shotCount = 0;
 
     private int currentLevel = 1;
-    private int goldShotTarget = 10;
-    private int silverShotTarget = 20;
+    public int goldShotTarget = 10;
+    public int silverShotTarget = 20;
     private string levelGrade = "NO_GRADE";
 
     [SerializeField]

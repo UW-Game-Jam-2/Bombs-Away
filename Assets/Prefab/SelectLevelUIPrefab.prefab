@@ -2482,6 +2482,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8199386256668024538, guid: 4eccc7874a97d470f903475d997e55e8, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 7bfbd5d5428ed4d9196d1137f9799451, type: 3}
     - target: {fileID: 9009573661313339913, guid: 4eccc7874a97d470f903475d997e55e8, type: 3}
       propertyPath: m_Name
       value: StickyBomb
@@ -2628,6 +2632,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8199386256668024538, guid: 4eccc7874a97d470f903475d997e55e8, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 4327ff2f8f5e24f7caea2e489b6ae898, type: 3}
     - target: {fileID: 9009573661313339913, guid: 4eccc7874a97d470f903475d997e55e8, type: 3}
       propertyPath: m_Name
       value: DrillBomb
@@ -2785,7 +2793,7 @@ PrefabInstance:
     - target: {fileID: 8199386256668024538, guid: 4eccc7874a97d470f903475d997e55e8, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: fce18f32210694b048ede432011fe65b, type: 3}
+      objectReference: {fileID: 21300000, guid: 66e130d3adc7d4932a69fa9c6ba200e2, type: 3}
     - target: {fileID: 9009573661313339913, guid: 4eccc7874a97d470f903475d997e55e8, type: 3}
       propertyPath: m_Name
       value: MoabBomb

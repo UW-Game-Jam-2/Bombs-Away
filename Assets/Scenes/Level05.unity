@@ -740,6 +740,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 233672445, guid: e673ba2e2886aef4dbfc9a47b0d8d90b, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: c4c2d5380af5b45288f4d3f6b4a3780c, type: 3}
+    - target: {fileID: 233672445, guid: e673ba2e2886aef4dbfc9a47b0d8d90b, type: 3}
       propertyPath: m_SortingOrder
       value: 8
       objectReference: {fileID: 0}
@@ -1398,6 +1402,14 @@ PrefabInstance:
       propertyPath: overallText
       value: 
       objectReference: {fileID: 1487587253}
+    - target: {fileID: 5364807862032139765, guid: d4d3f50e48aba5641b3fdb0ff431771d, type: 3}
+      propertyPath: goldShotTarget
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 5364807862032139765, guid: d4d3f50e48aba5641b3fdb0ff431771d, type: 3}
+      propertyPath: silverShotTarget
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 5364807862032139765, guid: d4d3f50e48aba5641b3fdb0ff431771d, type: 3}
       propertyPath: bombObjectiveText
       value: 

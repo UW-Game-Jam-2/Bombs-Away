@@ -56,28 +56,17 @@ public class GameManager : MonoBehaviour
     [SerializeField] SceneFader sceneFader;
     public static GameManager sharedInstance;
     const string LEVEL_SELECT = "LevelSelect";
-    const string CURRENT_LEVEL = "currentLevel";
     const string AVAILABLE_BOMBS_KEY = "AVAILABLE_BOMBS_KEY";
+    const string TOTAL_COIN_COUNT = "totalCoinCount";
 
     private int[] goldShotTarget = new int[] { 20, 20, 20, 20, 20, 20 };
     private int[] silverShotTarget = new int[] { 40, 40, 40, 40, 40, 40 };
 
-    public int highestLevelBeat = 10;
-    public int playerAvailableGold = 100;
+    public int highestLevelBeat;
+    public int playerAvailableGold;
 
     public PlayerInfo playerInfo;
 
-
-    // DONE: Create a Island "Drawer" script.  It will check the highest completed level for the player and render all the islands and colliders for the "revealed" islands.
-    // In PROGRESS: work with Jarrod to bring the narrative in in small chunks
-    // DONE: create a DialogueLoader that loads the correct narrative based on the most recently finished level and if they have seen it before
-    // TODO: Tweak costs for bombs/when they unlock
-    // TODO: Show the player's gold in the Salty Dog
-    // TODO: bring in Quinns art
-    // TODO: Upload a build and get everyone to test for bugs
-    // TODO: Show the player's objectives in the level select
-    // TODO: Make sure the first and second level are pretty easy with bad bombs
-    // TODO: Make sure
 
 
     /// <summary>
@@ -132,11 +121,11 @@ public class GameManager : MonoBehaviour
     {
         /// ONLY FOR DEBUG PURPOSES
         ///
-        if (Input.GetKeyDown(KeyCode.Y))
-        {
-            playerInfo.highestLevelBeat += 1;
-            GoToLevelSelect();
-        }
+        //if (Input.GetKeyDown(KeyCode.Y))
+        //{
+        //    playerInfo.highestLevelBeat += 1;
+        //    GoToLevelSelect();
+        //}
 
 
         if(sceneFader == null)
@@ -173,6 +162,7 @@ public class GameManager : MonoBehaviour
                         // You have unlocked the buy bought you havent bought yet
                         if (playerInfo.highestLevelBeat >= kvp.Value.unlockedAfterLevel)
                         {
+
                             newPurchasableBombs.Add(storeInfo);
                         }
                         else
@@ -229,6 +219,7 @@ public class GameManager : MonoBehaviour
 
         // need for the objective tracking
         int levelIndex = (int)levelName[levelName.Length - 1];
+        playerInfo.highestLevelBeat = Mathf.Max(playerInfo.highestLevelBeat, levelIndex);
         PlayerPrefs.SetInt("CURRENT_LEVEL", levelIndex);
 
         // need for the level config
@@ -250,7 +241,20 @@ public class GameManager : MonoBehaviour
 
     public void GoToLevelSelectScene()
     {
-        SceneManager.LoadScene("LevelSelect");
+
+        UpdatePlayerInfo();
+
+        GoToLevelSelect();
+    }
+
+    private void UpdatePlayerInfo()
+    {
+
+        if (PlayerPrefs.HasKey(TOTAL_COIN_COUNT))
+        {
+            playerInfo.gold = PlayerPrefs.GetInt(TOTAL_COIN_COUNT);
+        }
+
     }
 
     public int GetGoalCoinsByLevel(int level)
