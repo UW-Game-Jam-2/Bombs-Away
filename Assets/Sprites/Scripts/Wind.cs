@@ -15,10 +15,13 @@ public class Wind : MonoBehaviour
     private WindDirection currentWindDirection;
     private float currentWindStrength;
 
+    private BoxCollider2D collider;
+
 
     // Start is called before the first frame update
     void Start()
     {
+        collider = gameObject.GetComponent<BoxCollider2D>();
         windIndicator = GetComponentInChildren<WindIndicator>();
         UpdateIndicator();
     }
@@ -26,10 +29,14 @@ public class Wind : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        foreach (GameObject bomb in getBombs())
-        {
-            ApplyForceToBomb(bomb);
+        GameObject[] bombsActive = getBombs();
+
+        for (int i=0; i < bombsActive.Length; i++) {
+            if (collider.bounds.Contains(bombsActive[i].transform.position)) {
+                ApplyForceToBomb(bombsActive[i]);
+            }
         }
+        
     }
 
     public void BombDetonationEvent()
