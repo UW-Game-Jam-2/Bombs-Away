@@ -339,7 +339,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 8
-  m_Sprite: {fileID: 21300000, guid: 437c56526b8e3427e9d84e7795a5364c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5bbbb23d3536e47098a08ca23103bb45, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1165,7 +1165,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -191.68005}
+  m_AnchoredPosition: {x: 0, y: -191.68004}
   m_SizeDelta: {x: 0, y: -383.35}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &575149116896452294
@@ -1196,7 +1196,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 437c56526b8e3427e9d84e7795a5364c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5bbbb23d3536e47098a08ca23103bb45, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1638,7 +1638,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &575149117942175420
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1830,13 +1830,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 299d7ae66d47347f78aadf29c591ed7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bombPrefabs:
-  - {fileID: 6626840090696020865, guid: e7e9b66dbb5c14433b04026cfa47d070, type: 3}
-  - {fileID: 2963157229243368315, guid: 5a78c90fa60ebe3439cdafc7c0dfb01e, type: 3}
-  - {fileID: 560913111066401889, guid: 5470b81a622ac7945a2021345aec5051, type: 3}
-  - {fileID: 5698123290662842831, guid: 15e9a8bfea422354aa96cb3fd8638bdf, type: 3}
-  - {fileID: 5591316913438292377, guid: f6250e8a7a8937443a9d1117481b3e8a, type: 3}
-  - {fileID: 7454092182768490683, guid: 97f48fc85d5b9424eb4b93a6519f4002, type: 3}
   nextBombImages:
   - {fileID: 575149118586522477}
   - {fileID: 575149116785590879}

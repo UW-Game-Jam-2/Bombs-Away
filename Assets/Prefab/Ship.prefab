@@ -43,13 +43,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e719ba7675c949beb97030f5564c920, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bombPrefabs:
-  - {fileID: 6626840090696020865, guid: e7e9b66dbb5c14433b04026cfa47d070, type: 3}
-  - {fileID: 2963157229243368315, guid: 5a78c90fa60ebe3439cdafc7c0dfb01e, type: 3}
-  - {fileID: 560913111066401889, guid: 5470b81a622ac7945a2021345aec5051, type: 3}
-  - {fileID: 5698123290662842831, guid: 15e9a8bfea422354aa96cb3fd8638bdf, type: 3}
-  - {fileID: 5591316913438292377, guid: f6250e8a7a8937443a9d1117481b3e8a, type: 3}
-  - {fileID: 7454092182768490683, guid: 97f48fc85d5b9424eb4b93a6519f4002, type: 3}
   explosionType: 0
 --- !u!1 &8123144108671383023
 GameObject:

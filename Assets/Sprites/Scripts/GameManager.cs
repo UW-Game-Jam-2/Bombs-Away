@@ -236,7 +236,7 @@ public class GameManager : MonoBehaviour
 
     private void GoToScene(string sceneName)
     {
-        sceneFader.FadeTo(sceneName);
+        sharedInstance.sceneFader.FadeTo(sceneName);
     }
 
     public void GoToLevelSelectScene()
@@ -252,7 +252,7 @@ public class GameManager : MonoBehaviour
 
         if (PlayerPrefs.HasKey(TOTAL_COIN_COUNT))
         {
-            playerInfo.gold = PlayerPrefs.GetInt(TOTAL_COIN_COUNT);
+            sharedInstance.playerInfo.gold = PlayerPrefs.GetInt(TOTAL_COIN_COUNT);
         }
 
     }

@@ -43,4 +43,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e83b366480d0448bbaea3666910dc2a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  clusterCost: 0
+  clusterUnlock: 0
+  horizontalCost: 0
+  horizontalUnlock: 0
+  moabCost: 0
+  moabUnlock: 0
+  verticalCost: 0
+  verticalUnlock: 0
+  stickyCost: 0
+  stickyUnlock: 0
   sceneFader: {fileID: 0}
+  highestLevelBeat: 10
+  playerAvailableGold: 100
+  availableBombs: 00000000

@@ -43,6 +43,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84a3969437c9e1f4eae7496eb0a3b979, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  goldShotTarget: 10
+  silverShotTarget: 20
   levelCompleteCanvas: {fileID: 0}
   coinText: {fileID: 0}
   chestText: {fileID: 0}
