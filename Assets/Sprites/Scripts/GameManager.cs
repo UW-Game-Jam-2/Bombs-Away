@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -59,8 +60,8 @@ public class GameManager : MonoBehaviour
     const string AVAILABLE_BOMBS_KEY = "AVAILABLE_BOMBS_KEY";
     const string TOTAL_COIN_COUNT = "totalCoinCount";
 
-    private int[] goldShotTarget = new int[] { 20, 20, 20, 20, 20, 20 };
-    private int[] silverShotTarget = new int[] { 40, 40, 40, 40, 40, 40 };
+    private int[] goldShotTarget = new int[] { 20, 20, 20, 20, 22, 25 };
+    private int[] silverShotTarget = new int[] { 40, 40, 40, 40, 44, 40 };
 
     public int highestLevelBeat;
     public int playerAvailableGold;
@@ -110,6 +111,8 @@ public class GameManager : MonoBehaviour
 
 
         playerInfo = new PlayerInfo(playerAvailableGold, highestLevelBeat);
+
+        //PlayerPrefs.DeleteAll();
     }
 
     private void Start()
@@ -123,12 +126,12 @@ public class GameManager : MonoBehaviour
         ///
         //if (Input.GetKeyDown(KeyCode.Y))
         //{
-        //    playerInfo.highestLevelBeat += 1;
+        //    //playerInfo.highestLevelBeat += 1;
         //    GoToLevelSelect();
         //}
 
 
-        if(sceneFader == null)
+        if (sceneFader == null)
         {
             sceneFader = FindObjectOfType<SceneFader>();
         }
@@ -218,9 +221,11 @@ public class GameManager : MonoBehaviour
     {
 
         // need for the objective tracking
-        int levelIndex = (int)levelName[levelName.Length - 1];
+        int levelIndex = Convert.ToInt32($"{levelName[levelName.Length - 1]}");
+        print($" HIGHEST {playerInfo.highestLevelBeat}|{levelIndex}");
         playerInfo.highestLevelBeat = Mathf.Max(playerInfo.highestLevelBeat, levelIndex);
-        PlayerPrefs.SetInt("CURRENT_LEVEL", levelIndex);
+        print($" HIGHEST {playerInfo.highestLevelBeat}|{levelIndex}");
+        PlayerPrefs.SetInt("currentLevel", levelIndex);
 
         // need for the level config
         string availableBombString = "";
@@ -230,6 +235,9 @@ public class GameManager : MonoBehaviour
         }
         PlayerPrefs.SetString(AVAILABLE_BOMBS_KEY, availableBombString.Remove(availableBombString.Length - 1, 1));
         //print(availableBombString.Remove(availableBombString.Length - 1, 1));
+
+
+        PlayerPrefs.SetInt("totalCoinCount", playerInfo.gold);
 
         GoToScene(levelName);
     }

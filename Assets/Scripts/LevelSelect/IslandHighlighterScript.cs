@@ -39,6 +39,7 @@ public class IslandHighlighterScript : MonoBehaviour
         {
             int currentLevel = i;
             string key = $"Level{currentLevel}_Grade";
+            print($"KEY {key}");
 
             if (PlayerPrefs.HasKey(key))
             {
@@ -46,6 +47,7 @@ public class IslandHighlighterScript : MonoBehaviour
                 //print($"Found grade for level {i}: {grade}");
 
                 levelGrades.Add(grade);
+                print($"GRADE: {grade}");
             } else
             {
 
@@ -94,7 +96,7 @@ public class IslandHighlighterScript : MonoBehaviour
         pressSpaceToPlay.enabled = onOff;
         levelGrade.enabled = onOff;
         levelScoreTitle.enabled = onOff;
-        //print(levelGrades[currentLevel]);
+        print(levelGrades[currentLevel]);
 
         if (levelGrades[currentLevel] == "Overall: BRONZE")
         {
@@ -159,6 +161,7 @@ public class IslandHighlighterScript : MonoBehaviour
     {
 
         currentLevel = Convert.ToInt32($"{islandName[islandName.Length - 1]}");
+        print($" CURRENT LEVEL: {currentLevel}");
         //print($"grade- Level is {currentLevel}");
 
         TurnOffCredits();

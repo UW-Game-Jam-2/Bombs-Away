@@ -75,7 +75,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ef38567a6ae3416b9a8f357edd28b71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  windForceStrength: 0.2
+  windForceStrength: 0.5
   maxWindStrength: 2
 --- !u!50 &741765059
 Rigidbody2D:

@@ -135,21 +135,25 @@ public class ObjectivesManagerScript : MonoBehaviour
             PlayerPrefs.SetInt("totalCoinCount", currentCoinCount);
         }
 
-        if (PlayerPrefs.HasKey("Level" + currentLevel + "_Grade"))
+
+        string levelKey = $"Level{currentLevel}_Grade";
+        print($"LEVEL KEY {levelKey}");
+
+        if (PlayerPrefs.HasKey(levelKey))
         {
-            string savedLevelGrade = PlayerPrefs.GetString("Level" + currentLevel + "_Grade");
+            string savedLevelGrade = PlayerPrefs.GetString(levelKey);
             if (savedLevelGrade.Equals("BRONZE") && (levelGrade.Equals("SILVER") || levelGrade.Equals("GOLD")))
             {
-                PlayerPrefs.SetString("Level" + currentLevel + "_Grade", levelGrade);
+                PlayerPrefs.SetString(levelKey, levelGrade);
             }
             else if (savedLevelGrade.Equals("SILVER") && levelGrade.Equals("GOLD"))
             {
-                PlayerPrefs.SetString("Level" + currentLevel + "_Grade", levelGrade);
+                PlayerPrefs.SetString(levelKey, levelGrade);
             }
         }
         else
         {
-            PlayerPrefs.SetString("Level" + currentLevel + "_Grade", levelGrade);
+            PlayerPrefs.SetString(levelKey, levelGrade);
         }
     }
 

@@ -472,7 +472,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2527044209737952670, guid: 69f3715a8eafc429dad54754517500f9, type: 3}
       propertyPath: windForceStrength
-      value: 0.2
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 3600521809438085616, guid: 69f3715a8eafc429dad54754517500f9, type: 3}
       propertyPath: m_Name
@@ -805,7 +805,7 @@ PrefabInstance:
       objectReference: {fileID: 740297235}
     - target: {fileID: 575149116896452288, guid: e673ba2e2886aef4dbfc9a47b0d8d90b, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -191.68004
+      value: -191.68002
       objectReference: {fileID: 0}
     - target: {fileID: 575149116980952044, guid: e673ba2e2886aef4dbfc9a47b0d8d90b, type: 3}
       propertyPath: m_Name

@@ -1162,14 +1162,12 @@ MonoBehaviour:
   - {fileID: 938279482}
   - {fileID: 1793314020}
   - {fileID: 2011375149}
-  - {fileID: 784684925}
   colliders:
   - {fileID: 1838014596}
   - {fileID: 1833481380}
   - {fileID: 1860218345}
   - {fileID: 2139502909}
   - {fileID: 992228285}
-  - {fileID: 1885046863}
 --- !u!4 &704016122
 Transform:
   m_ObjectHideFlags: 0
@@ -4352,7 +4350,7 @@ MonoBehaviour:
       Jack Rackham! \n"
     - "A truly impressive success! There\u2019s more riches to be had, but tonight
       we drink! \n"
-    - To be continued...
+    - To be continued... (Congrats on finishing our game!)
 --- !u!114 &1114386930 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5658433694293671773, guid: 1f6a942b9e8264642baa9b653df21818, type: 3}
@@ -14002,7 +14000,7 @@ CapsuleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1885046861}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
