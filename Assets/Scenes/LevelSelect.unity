@@ -123,6 +123,17 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &31636015 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 791699353812955687, guid: 1f6a942b9e8264642baa9b653df21818, type: 3}
+  m_PrefabInstance: {fileID: 5323366818776066846}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &43324479
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1896,10 +1907,17 @@ MonoBehaviour:
   theSatlyDogTitleText: {fileID: 1827095016}
   theSaltyDogStoreInCanvas: {fileID: 913370628}
   gameTitleText: {fileID: 1425853843323890280}
-  levelTitleText: {fileID: 5086664175338002606}
-  levelNameText: {fileID: 313538856704455370}
   creditsText: {fileID: 4740365166717896212}
   pressSpaceToPlay: {fileID: 3254129533602108917}
+  levelTitleText: {fileID: 5086664175338002606}
+  levelNameText: {fileID: 313538856704455370}
+  levelGrade: {fileID: 31636015}
+  levelScoreTitle: {fileID: 1573783810}
+  levelImages:
+  - {fileID: 1366958457}
+  - {fileID: 2076053750}
+  - {fileID: 1901203601}
+  numLevels: 5
 --- !u!1 &875910677
 GameObject:
   m_ObjectHideFlags: 0
@@ -5226,6 +5244,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8727762599041188924, guid: 1f6a942b9e8264642baa9b653df21818, type: 3}
   m_PrefabInstance: {fileID: 5323366818776066846}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1366958457 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 809485878032558826, guid: 1f6a942b9e8264642baa9b653df21818, type: 3}
+  m_PrefabInstance: {fileID: 5323366818776066846}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1406527007 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3104506277423351897, guid: 1f6a942b9e8264642baa9b653df21818, type: 3}
@@ -5435,6 +5464,17 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 8846823635989279305, guid: 30aa67372e7a9443abaa0134093e7028, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 30aa67372e7a9443abaa0134093e7028, type: 3}
+--- !u!114 &1573783810 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5488275171318776099, guid: 1f6a942b9e8264642baa9b653df21818, type: 3}
+  m_PrefabInstance: {fileID: 5323366818776066846}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1839735485 &1578111201 stripped
 Tilemap:
   m_CorrespondingSourceObject: {fileID: 7569641035928474325, guid: 2d4a842497bbd46c499e32fb9782d298, type: 3}
@@ -13684,6 +13724,17 @@ CapsuleCollider2D:
   m_Offset: {x: 0.14448452, y: 0.012040257}
   m_Size: {x: 1.3187461, y: 2.6134117}
   m_Direction: 0
+--- !u!114 &1901203601 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3747617154952413085, guid: 1f6a942b9e8264642baa9b653df21818, type: 3}
+  m_PrefabInstance: {fileID: 5323366818776066846}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1991671683 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1071023509748689578, guid: 1f6a942b9e8264642baa9b653df21818, type: 3}
@@ -14358,6 +14409,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2076053750 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6545238191111653110, guid: 1f6a942b9e8264642baa9b653df21818, type: 3}
+  m_PrefabInstance: {fileID: 5323366818776066846}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2081739955
 GameObject:
   m_ObjectHideFlags: 0
@@ -14730,7 +14792,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2831834670802632601, guid: 16872c6b246234351bd8a01f973efffc, type: 3}
       propertyPath: highestLevelBeat
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2831834670802632601, guid: 16872c6b246234351bd8a01f973efffc, type: 3}
       propertyPath: horizontalUnlock

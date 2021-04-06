@@ -187,7 +187,7 @@ public class GameManager : MonoBehaviour
         this.lockedBombs = newLockedBombs;
         this.purchasableBombs = new List<StoreInfo>(newPurchasableBombs);
 
-        print("INVENTORY RELOADED");
+        //print("INVENTORY RELOADED");
     }
 
     /// <summary>
@@ -198,9 +198,9 @@ public class GameManager : MonoBehaviour
     public void BuyBomb(ExplosionType type)
     {
         // take away player money
-        print(playerInfo.gold);
+        //print(playerInfo.gold);
         playerInfo.gold -= bombStoreInfo[type].cost;
-        print(playerInfo.gold);
+        //print(playerInfo.gold);
 
         /// Remove the bomb from purchasable bombs
         List < StoreInfo > newPurchasableBombs = new List<StoreInfo>();
@@ -238,7 +238,7 @@ public class GameManager : MonoBehaviour
             availableBombString += $"{type.ToString()},";
         }
         PlayerPrefs.SetString(AVAILABLE_BOMBS_KEY, availableBombString.Remove(availableBombString.Length - 1, 1));
-        print(availableBombString.Remove(availableBombString.Length - 1, 1));
+        //print(availableBombString.Remove(availableBombString.Length - 1, 1));
 
         GoToScene(levelName);
     }

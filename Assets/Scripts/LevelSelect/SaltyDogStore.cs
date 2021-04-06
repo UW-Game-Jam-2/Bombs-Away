@@ -41,22 +41,24 @@ public class SaltyDogStore : MonoBehaviour
         List<StoreInfo> lockedBombs = GameManager.sharedInstance.lockedBombs;
         List<ExplosionType> availableBombs = GameManager.sharedInstance.availableBombs;
 
-        print($" ===== POPULATE STORES =====");
 
-        foreach (StoreInfo storeInfo in purchasableBombs)
-        {
-            print($"{storeInfo.explosionType} is purchaseable");
-        }
+        // DEBUG PURPOSES
+        //print($" ===== POPULATE STORES =====");
 
-        foreach (StoreInfo storeInfo in lockedBombs)
-        {
-            print($"{storeInfo.explosionType} is locked");
-        }
+        //foreach (StoreInfo storeInfo in purchasableBombs)
+        //{
+        //    print($"{storeInfo.explosionType} is purchaseable");
+        //}
 
-        foreach (ExplosionType storeInfo in availableBombs)
-        {
-            print($"{storeInfo} is available");
-        }
+        //foreach (StoreInfo storeInfo in lockedBombs)
+        //{
+        //    print($"{storeInfo.explosionType} is locked");
+        //}
+
+        //foreach (ExplosionType storeInfo in availableBombs)
+        //{
+        //    print($"{storeInfo} is available");
+        //}
 
 
 
@@ -104,9 +106,9 @@ public class SaltyDogStore : MonoBehaviour
         /// turn off all the locks buttons
         foreach (StoreInfo type in purchasableBombs)
         {
-            print(type.explosionType);
-            print(type.cost);
-            print($" GAME MANAGER GOLD IN THE LOOP = {GameManager.sharedInstance.playerInfo.gold}");
+            //print(type.explosionType);
+            //print(type.cost);
+            //print($" GAME MANAGER GOLD IN THE LOOP = {GameManager.sharedInstance.playerInfo.gold}");
 
             bool playerCanAfford;
 
