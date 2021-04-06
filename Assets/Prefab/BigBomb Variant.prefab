@@ -1,5 +1,31 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!61 &9139366060509695230
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5133732206102021329}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.28, y: 1.28}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.28, y: 1.28}
+  m_EdgeRadius: 0
 --- !u!1001 &2074450573774649168
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -57,7 +83,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6626840090696020865, guid: e7e9b66dbb5c14433b04026cfa47d070, type: 3}
       propertyPath: m_Name
-      value: BigBomb
+      value: BigBomb Variant
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: e7e9b66dbb5c14433b04026cfa47d070, type: 3}
+--- !u!1 &5133732206102021329 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6626840090696020865, guid: e7e9b66dbb5c14433b04026cfa47d070, type: 3}
+  m_PrefabInstance: {fileID: 2074450573774649168}
+  m_PrefabAsset: {fileID: 0}

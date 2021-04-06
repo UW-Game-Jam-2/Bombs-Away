@@ -15,10 +15,13 @@ public class Wind : MonoBehaviour
     private WindDirection currentWindDirection;
     private float currentWindStrength;
 
+    private BoxCollider2D collider;
+
 
     // Start is called before the first frame update
     void Start()
     {
+        collider = gameObject.GetComponent<BoxCollider2D>();
         windIndicator = GetComponentInChildren<WindIndicator>();
         UpdateIndicator();
     }
@@ -26,10 +29,19 @@ public class Wind : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        foreach (GameObject bomb in getBombs())
-        {
-            ApplyForceToBomb(bomb);
+        //foreach (GameObject bomb in getBombs())
+        //{
+        //    ApplyForceToBomb(bomb);
+        //}
+
+        GameObject[] bombsActive = GameObject.FindGameObjectsWithTag("Bomb");
+
+        for (int i=0; i < bombsActive.Length; i++) {
+            if (collider.bounds.Contains(bombsActive[i].transform.position)) {
+                ApplyForceToBomb(bombsActive[i]);
+            }
         }
+        
     }
 
     public void BombDetonationEvent()
@@ -69,5 +81,12 @@ public class Wind : MonoBehaviour
     private GameObject[] getBombs()
     {
         return GameObject.FindGameObjectsWithTag("Bomb");
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision) {
+        if (collision.gameObject.tag == "Bomb") {
+            //Debug.Log("trigger - bomb collider detected");
+            //ApplyForceToBomb(collision.gameObject);
+        }
     }
 }
